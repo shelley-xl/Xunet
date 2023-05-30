@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net45;net461;net48;net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
+		<LangVersion>10.0</LangVersion>
+		<!-- version numbers will be updated by build -->
+		<AssemblyVersion>1.0.0.100</AssemblyVersion>
+		<Version>1.0.0.100</Version>
+		<FileVersion>1.0.0.100</FileVersion>
+		<VersionPrefix></VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<Authors>徐来</Authors>
+		<Company>徐来</Company>
+		<Title>Xunet</Title>
+		<Product>Xunet.NET</Product>
+		<Description>Xunet is a common library for .NET</Description>
+		<Summary>Xunet is a common library for .NET</Summary>
+		<Copyright>Copyright © 徐来 Xulai 2023</Copyright>
+		<RootNamespace>Xunet</RootNamespace>
+		<AssemblyName>Xunet</AssemblyName>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>
