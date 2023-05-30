@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunet", "Xunet\Xunet.csproj", "{19D2E6E8-E9B2-412C-8C1F-2C21DDBAEEA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xunet", "src\Xunet.csproj", "{19D2E6E8-E9B2-412C-8C1F-2C21DDBAEEA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
