@@ -1,0 +1,14 @@
+D:\_code\Xunet\Xunet\bin\Debug\net7.0\Xunet.deps.json
+D:\_code\Xunet\Xunet\bin\Debug\net7.0\Xunet.dll
+D:\_code\Xunet\Xunet\bin\Debug\net7.0\Xunet.pdb
+D:\_code\Xunet\Xunet\bin\Debug\net7.0\Xunet.xml
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.csproj.AssemblyReference.cache
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.GeneratedMSBuildEditorConfig.editorconfig
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.AssemblyInfoInputs.cache
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.AssemblyInfo.cs
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.csproj.CoreCompileInputs.cache
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.dll
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\refint\Xunet.dll
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.xml
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\Xunet.pdb
+D:\_code\Xunet\Xunet\obj\Debug\net7.0\ref\Xunet.dll

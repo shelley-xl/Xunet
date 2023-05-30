@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xunet</name>
+    </assembly>
+    <members>
+        <member name="T:System.DateTimeExtension">
+            <summary>
+            日期时间扩展类
+            </summary>
+        </member>
+        <member name="F:System.DateTimeExtension.timeStampStartTime">
+            <summary>
+            时间戳起始时间
+            </summary>
+        </member>
+        <member name="M:System.DateTimeExtension.ToLongTimeStamp(System.DateTime)">
+            <summary>
+            获取时间戳
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>毫秒级时间戳</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToTimeStamp(System.DateTime)">
+            <summary>
+            获取时间戳
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>秒级时间戳</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToDateTime(System.Int32)">
+            <summary>
+            获取DateTime
+            </summary>
+            <param name="timeStamp">秒级时间戳</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToDateTime(System.Int64)">
+            <summary>
+            获取DateTime
+            </summary>
+            <param name="longTimeStamp">毫秒级时间戳</param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToStandardDateTimeString(System.DateTime)">
+            <summary>
+            获取标准日期时间格式
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>字符串格式：yyyy-MM-dd HH:mm:ss</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToStandardDateTimeStringNumber(System.DateTime)">
+            <summary>
+            获取标准日期时间格式
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>字符串格式：yyyyMMddHHmmss</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToStandardDateTimeStringBegin(System.DateTime)">
+            <summary>
+            获取标准日期时间格式
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>字符串格式：yyyy-MM-dd 00:00:00</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToStandardDateTimeStringEnd(System.DateTime)">
+            <summary>
+            获取标准日期时间格式
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>字符串格式：yyyy-MM-dd 23:59:59</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToStandardTime(System.Int32)">
+            <summary>
+            获取标准时分秒格式
+            </summary>
+            <param name="seconds">秒</param>
+            <returns>00:00:00</returns>
+        </member>
+        <member name="M:System.DateTimeExtension.ToChineseWeek(System.DateTime)">
+            <summary>
+            获取中文星期
+            </summary>
+            <param name="dateTime">DateTime</param>
+            <returns>中文星期</returns>
+        </member>
+        <member name="T:System.FfmpegExtension">
+            <summary>
+            Ffmpeg扩展类
+            </summary>
+        </member>
+        <member name="M:System.FfmpegExtension.GetMediaLength(System.String,System.String)">
+            <summary>
+            获取文件时长，指定ffmpeg.exe所在文件夹，默认当前目录
+            </summary>
+            <param name="sourcePath">源文件</param>
+            <param name="ffmpegPath">ffmpeg.exe所在文件夹</param>
+            <returns>时长</returns>
+            <exception cref="T:System.IO.FileNotFoundException">文件未找到异常</exception>
+        </member>
+        <member name="M:System.FfmpegExtension.CatchVideoImg(System.String,System.String,System.String,System.Boolean,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取视频截图，指定ffmpeg.exe所在文件夹，默认当前目录
+            </summary>
+            <param name="sourcePath">源文件</param>
+            <param name="targetPath">目标文件</param>
+            <param name="ffmpegPath">ffmpeg.exe所在文件夹</param>
+            <param name="isCrop">是否裁剪，默认居中裁剪</param>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+            <param name="seconds">秒/帧</param>
+            <returns>结果</returns>
+            <exception cref="T:System.IO.FileNotFoundException">文件未找到异常</exception>
+        </member>
+        <member name="M:System.FfmpegExtension.ExecuteFfmpegCommand(System.String,System.String)">
+            <summary>
+            执行指定命令，指定ffmpeg.exe所在文件夹，默认当前目录
+            </summary>
+            <param name="ffmpegPath">ffmpeg.exe所在文件夹</param>
+            <param name="command">执行命令</param>
+            <returns>结果</returns>
+            <exception cref="T:System.IO.FileNotFoundException">文件未找到异常</exception>
+        </member>
+        <member name="T:System.JsonExtension">
+            <summary>
+            Json扩展类
+            </summary>
+        </member>
+        <member name="M:System.JsonExtension.SerializeObject``1(``0)">
+            <summary>
+            Json序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.JsonExtension.DeserializeObject``1(System.String)">
+            <summary>
+            Json反序列化
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.RandomExtension">
+            <summary>
+            随机数扩展类
+            </summary>
+        </member>
+        <member name="M:System.RandomExtension.Next(System.Int32,System.Int32)">
+            <summary>
+            生成随机数
+            </summary>
+            <param name="minValue">最小值</param>
+            <param name="maxValue">最大值</param>
+            <returns>返回指定范围内的随机数</returns>
+        </member>
+        <member name="M:System.RandomExtension.Next(System.Int32)">
+            <summary>
+            生成随机数
+            </summary>
+            <param name="maxValue">最大值</param>
+            <returns>返回0到最大值的随机数</returns>
+        </member>
+        <member name="M:System.RandomExtension.NextString(System.Int32,System.Int32)">
+            <summary>
+            生成随机字符串
+            </summary>
+            <param name="length">长度</param>
+            <param name="level">复杂等级，0纯数字，1数字+字母，2数字+字母+特殊字符</param>
+            <returns>返回指定长度的随机字符串</returns>
+        </member>
+        <member name="T:System.SecurityExtension">
+            <summary>
+            加解密扩展类
+            </summary>
+        </member>
+        <member name="M:System.SecurityExtension.ToMD5Encrypt(System.String,System.Boolean)">
+            <summary>
+            获取MD5值
+            </summary>
+            <param name="input">待加密字符串</param>
+            <param name="toUpper">是否转换成大写</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToSHA256Encrypt(System.String,System.Boolean)">
+            <summary>
+            获取SHA256值
+            </summary>
+            <param name="input">待加密字符串</param>
+            <param name="toUpper">是否转换成大写</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToAESEncrypt(System.String,System.String,System.String)">
+            <summary>
+            获取AES密文
+            </summary>
+            <param name="plainText">明文</param>
+            <param name="key">秘钥</param>
+            <param name="iv">偏移量</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToAESDecrypt(System.String,System.String,System.String)">
+            <summary>
+            获取AES明文
+            </summary>
+            <param name="cipherText">密文</param>
+            <param name="key">秘钥</param>
+            <param name="iv">偏移量</param>
+            <returns>明文</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToRSASecretKey(System.Int32)">
+            <summary>
+            获取RSA公钥和私钥，大小必须以8为增量从384位到16384位
+            </summary>
+            <param name="dwKeySize">key大小</param>
+            <returns>RSA公钥和私钥</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToRSAEncrypt(System.String,System.String)">
+            <summary>
+            获取RSA密文（公钥加密）
+            </summary>
+            <param name="plainText">明文</param>
+            <param name="xmlPublicKey">公钥</param>
+            <returns>密文</returns>
+        </member>
+        <member name="M:System.SecurityExtension.ToRSADecrypt(System.String,System.String)">
+            <summary>
+            获取RSA明文（私钥解密）
+            </summary>
+            <param name="cipherText">密文</param>
+            <param name="xmlPrivateKey">私钥</param>
+            <returns>明文</returns>
+        </member>
+        <member name="T:System.SecurityExtension.RSASecretKey">
+            <summary>
+            RSA公钥和私钥
+            </summary>
+        </member>
+        <member name="P:System.SecurityExtension.RSASecretKey.PublicKey">
+            <summary>
+            公钥
+            </summary>
+        </member>
+        <member name="P:System.SecurityExtension.RSASecretKey.PrivateKey">
+            <summary>
+            私钥
+            </summary>
+        </member>
+        <member name="T:System.StringExtension">
+            <summary>
+            String扩展类
+            </summary>
+        </member>
+        <member name="M:System.StringExtension.IsNullOrEmpty(System.String)">
+            <summary>
+            判断字符串是否为空或者null
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.IsNotNullOrEmpty(System.String)">
+            <summary>
+            判断字符串是否非空且不为null
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.IsNullOrWhiteSpace(System.String)">
+            <summary>
+            判断字符串是否为空（含空格）或者null
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+        <member name="M:System.StringExtension.IsNotNullOrWhiteSpace(System.String)">
+            <summary>
+            判断字符串是否非空（含空格）且不为null
+            </summary>
+            <param name="this"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,13 @@
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.csproj.AssemblyReference.cache
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.GeneratedMSBuildEditorConfig.editorconfig
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.AssemblyInfoInputs.cache
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.AssemblyInfo.cs
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.csproj.CoreCompileInputs.cache
+D:\_code\Xunet\Xunet\bin\Debug\net45\Xunet.dll
+D:\_code\Xunet\Xunet\bin\Debug\net45\Xunet.pdb
+D:\_code\Xunet\Xunet\bin\Debug\net45\Xunet.xml
+D:\_code\Xunet\Xunet\bin\Debug\net45\Newtonsoft.Json.dll
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.csproj.CopyComplete
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.dll
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.xml
+D:\_code\Xunet\Xunet\obj\Debug\net45\Xunet.pdb
