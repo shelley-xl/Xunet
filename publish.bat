@@ -1,1 +1,0 @@
-dotnet nuget push build\Debug\Xunet.1.0.0.2.nupkg --api-key oy2ku52ecj5frzpgv4iqrz57jsinumxetdyh7yhntemvrq --source https://api.nuget.org/v3/index.json
