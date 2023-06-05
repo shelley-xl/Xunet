@@ -2,6 +2,11 @@
 
 1、日期时间扩展类
 
+```
+// 获取当前时间戳
+ar timeStamp = DateTime.Now.ToTimeStamp();
+```
+
 2、Ffmpeg扩展类
 
 3、HttpClient扩展类
