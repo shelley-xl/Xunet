@@ -238,3 +238,4 @@ _site
 *.userprefs
 
 publish.bat
+/publish.bat
