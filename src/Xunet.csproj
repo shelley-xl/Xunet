@@ -5,9 +5,9 @@
 		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.0.103</AssemblyVersion>
-		<Version>1.0.1.1</Version>
-		<FileVersion>1.0.1.1</FileVersion>
+		<AssemblyVersion>1.0.0.104</AssemblyVersion>
+		<Version>1.0.1.2</Version>
+		<FileVersion>1.0.1.2</FileVersion>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
