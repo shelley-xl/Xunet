@@ -13,14 +13,14 @@ var dateTime = timeStamp.ToDateTime();
 2、Ffmpeg扩展类
 
 ```c#
-// Ffmpeg.exe所在目录
-var path = "Ffmpeg.exe所在目录";
-
+ // 音频文件路径
+var audio_path = "音频文件路径";
 // 获取音频文件时长
-var length = path.GetMediaLength();
-
+var length = audio_path.GetMediaLength("Ffmpeg.exe所在目录，默认当前目录");
+// 视频文件路径
+var video_path = "视频文件路径";
 // 获取视频截图
-var image = path.CatchVideoImg("目标存储目录");
+var image = video_path.CatchVideoImg("目标存储路径", "Ffmpeg.exe所在目录，默认当前目录");
 ```
 
 3、HttpClient扩展类
