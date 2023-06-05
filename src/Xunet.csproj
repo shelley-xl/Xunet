@@ -29,7 +29,7 @@
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageProjectUrl>https://www.nuget.org/packages/Xunet</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/shelley-xl/Xunet</PackageProjectUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<BaseOutputPath>..\build</BaseOutputPath>
 	</PropertyGroup>
