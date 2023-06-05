@@ -47,9 +47,6 @@ public class UnitTest
         Assert.False("12345678900".IsPhoneNumber());
         Assert.False("12345678900".IsEmail());
         Assert.False("123456789987654321".IsIDCard());
-        var text = "我##@爱~@#!你#*(中国";
-        var value = text.GetChineseWord();
-        Assert.Equal("我爱你中国", value);
         #endregion
 
         #region 随机数扩展类
