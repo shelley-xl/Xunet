@@ -237,5 +237,4 @@ docs/_build
 _site
 *.userprefs
 
-upload/
-/src/AppSoft/nlog.txt
+publish.bat
