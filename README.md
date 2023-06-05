@@ -29,6 +29,8 @@ var image = video_path.CatchVideoImg("目标存储路径", "Ffmpeg.exe所在目�
  var url = "https://api.demo.com/test";
  // GET请求
  var result = await url.HttpGetAsync();
+ // POST请求（支持application/json和form-data）
+ var result2 = await url.HttpPostAsync(HttpContentType.ApplicationJson, new { id = "参数1", name = "参数2" });
 ```
 
 4、Json扩展类
