@@ -2,9 +2,9 @@
 
 1、日期时间扩展类
 
-```
+```c#
 // 获取当前时间戳
-ar timeStamp = DateTime.Now.ToTimeStamp();
+var timeStamp = DateTime.Now.ToTimeStamp();
 ```
 
 2、Ffmpeg扩展类
