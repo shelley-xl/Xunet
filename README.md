@@ -67,7 +67,7 @@ var aesValue = input.ToAESEncrypt();
 // AES解密
 var aesText = aesValue.ToAESDecrypt();
 // RSA加密
-// 获取RSA公钥和私钥（128位）
+// 获取RSA公钥和私钥（2048位）
 var key = 2048.ToRSASecretKey();
 // 公钥加密
 var rsaValue = input.ToRSAEncrypt(key.PublicKey);

@@ -18,18 +18,16 @@ public static class SecurityExtension
     /// <returns>加密后的字符串</returns>
     public static string ToMD5Encrypt(this string input, bool toUpper = false)
     {
-        using (var md5 = MD5.Create())
+        using var md5 = MD5.Create();
+        var buffer = Encoding.UTF8.GetBytes(input);
+        var MD5buffer = md5.ComputeHash(buffer);
+        var builder = new StringBuilder();
+        foreach (var item in MD5buffer)
         {
-            var buffer = Encoding.UTF8.GetBytes(input);
-            var MD5buffer = md5.ComputeHash(buffer);
-            StringBuilder builder = new StringBuilder();
-            foreach (var item in MD5buffer)
-            {
-                if (toUpper) builder.Append(item.ToString("X2"));
-                else builder.Append(item.ToString("x2"));
-            }
-            return builder.ToString();
+            if (toUpper) builder.Append(item.ToString("X2"));
+            else builder.Append(item.ToString("x2"));
         }
+        return builder.ToString();
     }
     #endregion
 
@@ -42,18 +40,16 @@ public static class SecurityExtension
     /// <returns>加密后的字符串</returns>
     public static string ToSHA256Encrypt(this string input, bool toUpper = false)
     {
-        using (var sha256 = SHA256.Create())
+        using var sha256 = SHA256.Create();
+        var buffer = Encoding.UTF8.GetBytes(input);
+        var SHA256buffer = sha256.ComputeHash(buffer);
+        var builder = new StringBuilder();
+        foreach (var item in SHA256buffer)
         {
-            var buffer = Encoding.UTF8.GetBytes(input);
-            var SHA256buffer = sha256.ComputeHash(buffer);
-            StringBuilder builder = new StringBuilder();
-            foreach (var item in SHA256buffer)
-            {
-                if (toUpper) builder.Append(item.ToString("X2"));
-                else builder.Append(item.ToString("x2"));
-            }
-            return builder.ToString();
+            if (toUpper) builder.Append(item.ToString("X2"));
+            else builder.Append(item.ToString("x2"));
         }
+        return builder.ToString();
     }
     #endregion
 
@@ -72,19 +68,15 @@ public static class SecurityExtension
         byte[] toEncryptArray = Encoding.UTF8.GetBytes(plainText);
         var encryptKey = Encoding.UTF8.GetBytes(key!);
         byte[] ivArray = Encoding.UTF8.GetBytes(iv!);
-        using (var aesAlg = Aes.Create())
-        {
-            aesAlg.Mode = CipherMode.CBC;
-            aesAlg.KeySize = 128;
-            aesAlg.Key = encryptKey;
-            aesAlg.Padding = PaddingMode.PKCS7;
-            aesAlg.IV = ivArray;
-            using (var encryptor = aesAlg.CreateEncryptor(encryptKey, aesAlg.IV))
-            {
-                byte[] resultArray = encryptor.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-                return Convert.ToBase64String(resultArray);
-            }
-        }
+        using var aesAlg = Aes.Create();
+        aesAlg.Mode = CipherMode.CBC;
+        aesAlg.KeySize = 128;
+        aesAlg.Key = encryptKey;
+        aesAlg.Padding = PaddingMode.PKCS7;
+        aesAlg.IV = ivArray;
+        using var encryptor = aesAlg.CreateEncryptor(encryptKey, aesAlg.IV);
+        byte[] resultArray = encryptor.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+        return Convert.ToBase64String(resultArray);
     }
     #endregion
 
@@ -103,32 +95,33 @@ public static class SecurityExtension
         var ivByte = Encoding.UTF8.GetBytes(iv!);
         byte[] toEncryptArray = Convert.FromBase64String(cipherText);
         var decryptKey = Encoding.UTF8.GetBytes(key!);
-        using (var aesAlg = Aes.Create())
-        {
-            aesAlg.Mode = CipherMode.CBC;
-            aesAlg.KeySize = 128;
-            aesAlg.Key = decryptKey;
-            aesAlg.Padding = PaddingMode.PKCS7;
-            aesAlg.IV = ivByte;
-            using (var decryptor = aesAlg.CreateDecryptor(decryptKey, aesAlg.IV))
-            {
-                byte[] resultArray = decryptor.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-                return Encoding.UTF8.GetString(resultArray);
-            }
-        }
+        using var aesAlg = Aes.Create();
+        aesAlg.Mode = CipherMode.CBC;
+        aesAlg.KeySize = 128;
+        aesAlg.Key = decryptKey;
+        aesAlg.Padding = PaddingMode.PKCS7;
+        aesAlg.IV = ivByte;
+        using var decryptor = aesAlg.CreateDecryptor(decryptKey, aesAlg.IV);
+        byte[] resultArray = decryptor.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+        return Encoding.UTF8.GetString(resultArray);
     }
     #endregion
 
     #region 获取RSA公钥和私钥
     /// <summary>
     /// 获取RSA公钥和私钥，大小必须以8为增量从384位到16384位
+    /// 例如：1024 或 2048
     /// </summary>
     /// <param name="dwKeySize">key大小</param>
     /// <returns>RSA公钥和私钥</returns>
+    /// <exception cref="ArgumentException"></exception>
     public static RSASecretKey ToRSASecretKey(this int dwKeySize)
     {
-        RSASecretKey rsaKey = new RSASecretKey();
-        using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(dwKeySize))
+        if (dwKeySize < 384 || dwKeySize > 16384 || dwKeySize % 8 != 0)
+            throw new ArgumentException("大小必须以8为增量从384位到16384位");
+
+        var rsaKey = new RSASecretKey();
+        using (var rsa = new RSACryptoServiceProvider(dwKeySize))
         {
             rsaKey.PrivateKey = rsa.ToXmlString(true);
             rsaKey.PublicKey = rsa.ToXmlString(false);
@@ -147,7 +140,7 @@ public static class SecurityExtension
     public static string ToRSAEncrypt(this string plainText, string xmlPublicKey)
     {
         string encryptedContent = string.Empty;
-        using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+        using (var rsa = new RSACryptoServiceProvider())
         {
             rsa.FromXmlString(xmlPublicKey);
             byte[] encryptedData = rsa.Encrypt(Encoding.UTF8.GetBytes(plainText), false);
@@ -167,7 +160,7 @@ public static class SecurityExtension
     public static string ToRSADecrypt(this string cipherText, string xmlPrivateKey)
     {
         string decryptedContent = string.Empty;
-        using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+        using (var rsa = new RSACryptoServiceProvider())
         {
             rsa.FromXmlString(xmlPrivateKey);
             byte[] decryptedData = rsa.Decrypt(Convert.FromBase64String(cipherText), false);
