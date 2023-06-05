@@ -5,9 +5,8 @@
 		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.2.104</AssemblyVersion>
-		<Version>1.0.2</Version>
-		<FileVersion>1.0.2</FileVersion>
+		<AssemblyVersion>1.0.3.100</AssemblyVersion>
+		<FileVersion>1.0.3</FileVersion>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
@@ -22,13 +21,17 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Nullable>enable</Nullable>
-		<PackageProjectUrl>https://github.com/shelley-xl/Xunet</PackageProjectUrl>
-		<PackageIcon>logo.png</PackageIcon>
-		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<BaseOutputPath>..\build</BaseOutputPath>
+		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
+		<PackageId>Xunet</PackageId>
+		<PackageTags>tools</PackageTags>
+		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://www.nuget.org/packages/Xunet</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<BaseOutputPath>..\build</BaseOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net45'">
@@ -50,24 +53,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="bin\**" />
-	  <EmbeddedResource Remove="bin\**" />
-	  <None Remove="bin\**" />
+		<Compile Remove="bin\**" />
+		<EmbeddedResource Remove="bin\**" />
+		<None Remove="bin\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="..\LICENSE">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="..\logo.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
