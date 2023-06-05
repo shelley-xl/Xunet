@@ -5,9 +5,9 @@
 		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.0.102</AssemblyVersion>
-		<Version>1.0.0.2</Version>
-		<FileVersion>1.0.0.0</FileVersion>
+		<AssemblyVersion>1.0.0.100</AssemblyVersion>
+		<Version>1.0.0.1</Version>
+		<FileVersion>1.0.0.1</FileVersion>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
@@ -26,9 +26,7 @@
 		<PackageIcon>logo.png</PackageIcon>
 		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<BaseOutputPath>..\build</BaseOutputPath>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<BaseOutputPath>D:\_Git\Xunet\build</BaseOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net45'">
@@ -50,21 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="bin\**" />
-	  <EmbeddedResource Remove="bin\**" />
-	  <None Remove="bin\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="..\LICENSE">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
 	  <None Include="..\logo.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="..\README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
