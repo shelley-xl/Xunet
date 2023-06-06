@@ -1,5 +1,9 @@
 # 常用工具库
 
+Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些中间件，用于简化开发和提高工作效率。
+
+[![Xunet](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
+
 ## 扩展类
 
 1、日期时间扩展类
