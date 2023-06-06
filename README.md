@@ -40,6 +40,11 @@ var result = await url.HttpGetAsync();
 // POST请求（支持application/json和form-data）
 var result2 = await url.HttpPostAsync(HttpContentType.ApplicationJson, 
 new { id = "参数1", name = "参数2" });
+// PUT请求（支持application/json和form-data）
+var result2 = await url.HttpPutAsync(HttpContentType.ApplicationJson, 
+new { id = "参数1", name = "参数2" });
+// DELETE请求
+var result = await url.HttpDeleteAsync();
 ```
 
 4、Json扩展类
@@ -56,9 +61,13 @@ var obj = json.DeserializeObject<object>();
 5、随机数扩展类
 
 ```c#
+// 获取0~10以内的随机数（方式一）
+var randomNum1 = 0.Next(10);
+// 获取0~10以内的随机数（方式二）
+var randomNum2 = 10.Next();
 // 获取8位数随机字符串
 // 参数：level，复杂等级，0纯数字，1数字+字母，2数字+字母+特殊字符
-var text = 8.NextString(2);
+var randomText = 8.NextString(2);
 ```
 
 6、加解密扩展类
@@ -86,10 +95,15 @@ var rsaText = rsaValue.ToRSADecrypt(key.PrivateKey);
 7、String扩展类
 
 ```c#
+// 输入字符串
+var input = "123456";
 // 判断是否是null或者空字符串
-var isNull = "".IsNullOrEmpty();
+var isNull = input.IsNullOrEmpty();
 // 判断是否非null且非空字符串
-var isNotNull = "123456".IsNotNullOrEmpty();
+var isNotNull = input.IsNotNullOrEmpty();
+// 判断是否是手机号
+var isTel = input.IsPhoneNumber();
+// ...
 ```
 
 ## 辅助类
@@ -97,8 +111,8 @@ var isNotNull = "123456".IsNotNullOrEmpty();
 1、雪花ID
 
 ```c#
-// 获取雪花Id
+// 雪花Id（long类型）
 var id1 = SnowflakeHelper.NextId();
-// 获取雪花Id字符串
+// 雪花Id（字符串）
 var id2 = SnowflakeHelper.NextIdString();
 ```
