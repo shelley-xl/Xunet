@@ -1,5 +1,7 @@
 # 常用工具库
 
+## 扩展类
+
 1、日期时间扩展类
 
 ```c#
@@ -82,4 +84,15 @@ var rsaText = rsaValue.ToRSADecrypt(key.PrivateKey);
 var isNull = "".IsNullOrEmpty();
 // 判断是否非null且非空字符串
 var isNotNull = "123456".IsNotNullOrEmpty();
+```
+
+## 辅助类
+
+1、雪花ID
+
+```c#
+// 获取雪花Id
+var id1 = SnowflakeHelper.NextId();
+// 获取雪花Id字符串
+var id2 = SnowflakeHelper.NextIdString();
 ```

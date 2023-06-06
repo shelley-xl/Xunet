@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using Xunet.Newtonsoft.Json;
 
 namespace System;
 
