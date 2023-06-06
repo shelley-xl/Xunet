@@ -5,17 +5,17 @@
 		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.5.100</AssemblyVersion>
+		<AssemblyVersion>1.0.6.108</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
-		<Version>1.0.5</Version>
+		<Version>1.0.6</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
 		<Company>徐来</Company>
 		<Title>Xunet</Title>
 		<Product>Xunet.NET</Product>
-		<Description>Xunet is a common library for .NET</Description>
-		<Summary>Xunet is a common library for .NET</Summary>
+		<Description>Xunet is a general purpose tool library for .NET,contains extension methods,helper classes and some middleware,which is used to simplify development and improve work efficiency.</Description>
+		<Summary>Xunet is a general purpose tool library for .NET</Summary>
 		<Copyright>Copyright © 徐来 Xulai 2023</Copyright>
 		<RootNamespace>Xunet</RootNamespace>
 		<AssemblyName>Xunet</AssemblyName>
@@ -25,7 +25,7 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
 		<PackageId>Xunet</PackageId>
-		<PackageTags>tools</PackageTags>
+		<PackageTags>tools,helper,middleware</PackageTags>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
