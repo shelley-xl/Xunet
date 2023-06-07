@@ -1,3 +1,5 @@
+using Xunet.Logging;
+
 namespace Xunet.Tests;
 
 public class UnitTest
@@ -53,5 +55,39 @@ public class UnitTest
         var randomText = 8.NextString(2);
         Assert.NotNull(randomText);
         #endregion
+
+        #region 反射扩展类
+        var user = new User { Name = "徐来" };
+        var name = user.GetProperty<string>("Name");
+        Assert.Equal("徐来", name);
+        var namenew = user.SetProperty("Name", "徐来new");
+        name = user.GetProperty<string>("Name");
+        Assert.Equal("徐来new", name);
+        #endregion
+
+        #region 雪花ID辅助类
+        var id = SnowflakeHelper.NextId();
+        Assert.NotEqual(0, id);
+        #endregion
+
+        #region 拼音辅助类
+        input = "徐来";
+        var pinyin = PinyinHelper.GetPinyin(input).ToLower();
+        Assert.Equal("xulai", pinyin);
+        #endregion
+
+        #region 性能计时器辅助类
+        var milliSeconds = StopwatchHelper.Execute(() =>
+        {
+            // do something
+            Thread.Sleep(100);
+        });
+        #endregion
+
+        LogManager.Info("这是一条测试日志");
+
+        Thread.Sleep(5000);
     }
 }
+
+public class User { public string? Name { get; set; } };

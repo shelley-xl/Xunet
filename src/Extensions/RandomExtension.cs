@@ -14,7 +14,7 @@ public static class RandomExtension
     private static readonly char[] ConstantNumber = new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
     private static readonly char[] ConstantLowercase = new[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
     private static readonly char[] ConstantUppercase = new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-    private static readonly char[] ConstantSpecial = new[] { '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '/', '?', '.', ',', ';', '[', ']', '{', '}', '=' }; 
+    private static readonly char[] ConstantSpecial = new[] { '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '/', '?', '.', ',', ';', '[', ']', '{', '}', '=' };
     #endregion
 
     #region 生成随机数
@@ -51,22 +51,13 @@ public static class RandomExtension
     /// <returns>返回指定长度的随机字符串</returns>
     public static string NextString(this int length, int level = 0)
     {
-        char[] array;
-        switch (level)
+        char[] array = level switch
         {
-            case 0:
-                array = ConstantNumber;
-                break;
-            case 1:
-                array = ConstantNumber.Concat(ConstantLowercase).Concat(ConstantUppercase).ToArray();
-                break;
-            case 2:
-                array = ConstantNumber.Concat(ConstantLowercase).Concat(ConstantUppercase).Concat(ConstantSpecial).ToArray();
-                break;
-            default:
-                array = ConstantNumber;
-                break;
-        }
+            0 => ConstantNumber,
+            1 => ConstantNumber.Concat(ConstantLowercase).Concat(ConstantUppercase).ToArray(),
+            2 => ConstantNumber.Concat(ConstantLowercase).Concat(ConstantUppercase).Concat(ConstantSpecial).ToArray(),
+            _ => ConstantNumber,
+        };
         var stringBuilder = new StringBuilder(length);
         for (var i = 0; i < length; i++)
         {

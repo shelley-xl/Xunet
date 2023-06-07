@@ -5,16 +5,16 @@
 		<TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
 		<LangVersion>10.0</LangVersion>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.6.108</AssemblyVersion>
+		<AssemblyVersion>1.0.7.100</AssemblyVersion>
 		<FileVersion>1.0.0.0</FileVersion>
-		<Version>1.0.6</Version>
+		<Version>1.0.7</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
 		<Company>徐来</Company>
 		<Title>Xunet</Title>
 		<Product>Xunet.NET</Product>
-		<Description>Xunet is a general purpose tool library for .NET,contains extension methods,helper classes and some middleware,which is used to simplify development and improve work efficiency.</Description>
+		<Description>Xunet is a general purpose tool library for .NET,contains extension methods,helper classes and some components,which is used to simplify development and improve work efficiency.</Description>
 		<Summary>Xunet is a general purpose tool library for .NET</Summary>
 		<Copyright>Copyright © 徐来 Xulai 2023</Copyright>
 		<RootNamespace>Xunet</RootNamespace>
@@ -51,28 +51,15 @@
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net45'">
-		<Reference Include="Microsoft.CSharp" />
-		<Reference Include="System" />
-		<Reference Include="System.Core" />
 		<Reference Include="System.Configuration" />
-		<Reference Include="System.Drawing" />
-		<Reference Include="System.Net.Http" />
 		<Reference Include="System.IO.Compression" />
-		<Reference Include="System.ServiceModel" />
-		<Reference Include="System.ComponentModel.DataAnnotations" />
+		<Reference Include="System.Net.Http" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0'">
 		<PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-		<PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
-		<PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-		<PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-		<PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-		<PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
-		<PackageReference Include="System.Threading.Thread" Version="4.3.0" />
-		<PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<Compile Remove="bin\**" />
 		<EmbeddedResource Remove="bin\**" />

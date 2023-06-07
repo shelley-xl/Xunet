@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace System;
@@ -107,7 +108,7 @@ public static class StringExtension
         var spechar = containsSpeChar ? "~!@#$%^&*()_+" : "";
         var matches = Regex.Matches(str, $@"[\u4E00-\u9FFF{spechar}]+", RegexOptions.IgnoreCase);
         var sb = new StringBuilder();
-        foreach (Match NextMatch in matches)
+        foreach (Match NextMatch in matches.Cast<Match>())
         {
             sb.Append(NextMatch.Value);
         }

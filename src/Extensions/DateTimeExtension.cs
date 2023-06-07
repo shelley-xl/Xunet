@@ -10,7 +10,7 @@ public static class DateTimeExtension
     /// <summary>
     /// 时间戳起始时间
     /// </summary>
-    private static DateTime timeStampStartTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+    private readonly static DateTime timeStampStartTime = new(1970, 1, 1, 0, 0, 0, 0);
     #endregion
 
     #region 获取时间戳
@@ -132,25 +132,17 @@ public static class DateTimeExtension
     /// <returns>中文星期</returns>
     public static string ToChineseWeek(this DateTime dateTime)
     {
-        switch (dateTime.DayOfWeek)
+        return dateTime.DayOfWeek switch
         {
-            case DayOfWeek.Sunday:
-                return "星期日";
-            case DayOfWeek.Monday:
-                return "星期一";
-            case DayOfWeek.Tuesday:
-                return "星期二";
-            case DayOfWeek.Wednesday:
-                return "星期三";
-            case DayOfWeek.Thursday:
-                return "星期四";
-            case DayOfWeek.Friday:
-                return "星期五";
-            case DayOfWeek.Saturday:
-                return "星期六";
-            default:
-                return "";
-        }
+            DayOfWeek.Sunday => "星期日",
+            DayOfWeek.Monday => "星期一",
+            DayOfWeek.Tuesday => "星期二",
+            DayOfWeek.Wednesday => "星期三",
+            DayOfWeek.Thursday => "星期四",
+            DayOfWeek.Friday => "星期五",
+            DayOfWeek.Saturday => "星期六",
+            _ => "",
+        };
     }
     #endregion
 }

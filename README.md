@@ -1,10 +1,11 @@
 # 常用工具库
 
-Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些中间件，用于简化开发和提高工作效率。
+Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些常用组件，用于简化开发和提高工作效率。
 
 支持 .NET Framework 4.5、.NET 6.0、.NET 7.0
 
 [![Xunet](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
+[![Xunet](https://img.shields.io/nuget/dt/Xunet.svg?style=flat-square)](https://www.nuget.org/stats/packages/Xunet?groupby=Version)
 
 ## 扩展类
 
@@ -105,6 +106,16 @@ var isNotNull = input.IsNotNullOrEmpty();
 var isTel = input.IsPhoneNumber();
 // ...
 ```
+8、反射扩展类
+
+```c#
+// 对象
+var user = new User { Name = "徐来" };
+// 获取Name属性
+var name = user.GetProperty<string>("Name");
+// 设置Name属性
+var namenew = user.SetProperty("Name", "徐来new");
+```
 
 ## 辅助类
 
@@ -116,3 +127,42 @@ var id1 = SnowflakeHelper.NextId();
 // 雪花Id（字符串）
 var id2 = SnowflakeHelper.NextIdString();
 ```
+
+2、拼音助手
+
+```c#
+// 获取中文全拼
+var pinyin = PinyinHelper.GetPinyin("徐来");
+```
+
+3、读取配置文件
+
+```c#
+// 获取配置
+var value = AppSettingsHelper.GetValueOrDefault("key");
+```
+
+4、性能计时器
+
+```c#
+var milliSeconds = StopwatchHelper.Execute(() =>
+{
+    // do something
+    Thread.Sleep(100);
+});
+```
+
+## 组件
+
+日志组件
+
+```c#
+LogManager.Info("这是一条测试日志");
+```
+
+# 感谢
+
+[Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+[Snowflake](https://github.com/twitter-archive/snowflake)
+[WebSocketSharp](https://github.com/sta/websocket-sharp)
+[TinyPinyin](https://github.com/hstarorg/TinyPinyin.Net)

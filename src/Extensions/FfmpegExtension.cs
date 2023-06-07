@@ -24,28 +24,26 @@ public static class FfmpegExtension
         {
             throw new FileNotFoundException("未找到ffmpeg.exe文件");
         }
-        using (Process pro = new Process())
+        using Process pro = new();
+        pro.StartInfo.UseShellExecute = false;
+        pro.StartInfo.ErrorDialog = false;
+        pro.StartInfo.CreateNoWindow = true;
+        pro.StartInfo.RedirectStandardError = true;
+        pro.StartInfo.FileName = ffmpegFileName;
+        pro.StartInfo.Arguments = $"-i \"{sourcePath}\"";
+        pro.Start();
+        StreamReader errorreader = pro.StandardError;
+        pro.WaitForExit(1000);
+        string result = errorreader.ReadToEnd();
+        if (!string.IsNullOrEmpty(result))
         {
-            pro.StartInfo.UseShellExecute = false;
-            pro.StartInfo.ErrorDialog = false;
-            pro.StartInfo.CreateNoWindow = true;
-            pro.StartInfo.RedirectStandardError = true;
-            pro.StartInfo.FileName = ffmpegFileName;
-            pro.StartInfo.Arguments = $"-i \"{sourcePath}\"";
-            pro.Start();
-            StreamReader errorreader = pro.StandardError;
-            pro.WaitForExit(1000);
-            string result = errorreader.ReadToEnd();
-            if (!string.IsNullOrEmpty(result))
-            {
-                result = result.Substring(result.IndexOf("Duration: ") + "Duration: ".Length, "00:00:00".Length);
-                var h = int.Parse(result.Split(':')[0]);
-                var m = int.Parse(result.Split(':')[1]);
-                var s = int.Parse(result.Split(':')[2]);
-                return h * 3600 + m * 60 + s;
-            }
-            return 0;
+            result = result.Substring(result.IndexOf("Duration: ") + "Duration: ".Length, "00:00:00".Length);
+            var h = int.Parse(result.Split(':')[0]);
+            var m = int.Parse(result.Split(':')[1]);
+            var s = int.Parse(result.Split(':')[2]);
+            return h * 3600 + m * 60 + s;
         }
+        return 0;
     }
     #endregion
 
@@ -69,20 +67,18 @@ public static class FfmpegExtension
         {
             throw new FileNotFoundException("未找到ffmpeg.exe文件");
         }
-        using (Process pro = new Process())
-        {
-            pro.StartInfo.UseShellExecute = false;
-            pro.StartInfo.ErrorDialog = false;
-            pro.StartInfo.CreateNoWindow = true;
-            pro.StartInfo.RedirectStandardError = true;
-            pro.StartInfo.FileName = ffmpegFileName;
-            pro.StartInfo.Arguments = $"-ss {seconds.ToStandardTime()} -y -i \"{sourcePath}\" {(isCrop ? $"-vf crop={width}:{height}" : "")} \"{targetPath}\" -r 1 -vframes 1 -an -f mjpeg";
-            pro.Start();
-            StreamReader errorreader = pro.StandardError;
-            pro.WaitForExit(1000);
-            string result = errorreader.ReadToEnd();
-            return result;
-        }
+        using Process pro = new();
+        pro.StartInfo.UseShellExecute = false;
+        pro.StartInfo.ErrorDialog = false;
+        pro.StartInfo.CreateNoWindow = true;
+        pro.StartInfo.RedirectStandardError = true;
+        pro.StartInfo.FileName = ffmpegFileName;
+        pro.StartInfo.Arguments = $"-ss {seconds.ToStandardTime()} -y -i \"{sourcePath}\" {(isCrop ? $"-vf crop={width}:{height}" : "")} \"{targetPath}\" -r 1 -vframes 1 -an -f mjpeg";
+        pro.Start();
+        StreamReader errorreader = pro.StandardError;
+        pro.WaitForExit(1000);
+        string result = errorreader.ReadToEnd();
+        return result;
     }
     #endregion
 
@@ -101,20 +97,18 @@ public static class FfmpegExtension
         {
             throw new FileNotFoundException("未找到ffmpeg.exe文件");
         }
-        using (Process pro = new Process())
-        {
-            pro.StartInfo.UseShellExecute = false;
-            pro.StartInfo.ErrorDialog = false;
-            pro.StartInfo.CreateNoWindow = true;
-            pro.StartInfo.RedirectStandardError = true;
-            pro.StartInfo.FileName = ffmpegFileName;
-            pro.StartInfo.Arguments = command;
-            pro.Start();
-            StreamReader errorreader = pro.StandardError;
-            pro.WaitForExit(1000);
-            string result = errorreader.ReadToEnd();
-            return result;
-        }
+        using Process pro = new();
+        pro.StartInfo.UseShellExecute = false;
+        pro.StartInfo.ErrorDialog = false;
+        pro.StartInfo.CreateNoWindow = true;
+        pro.StartInfo.RedirectStandardError = true;
+        pro.StartInfo.FileName = ffmpegFileName;
+        pro.StartInfo.Arguments = command;
+        pro.Start();
+        StreamReader errorreader = pro.StandardError;
+        pro.WaitForExit(1000);
+        string result = errorreader.ReadToEnd();
+        return result;
     }
     #endregion
 }

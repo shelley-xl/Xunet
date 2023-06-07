@@ -18,9 +18,14 @@ public static class SecurityExtension
     /// <returns>加密后的字符串</returns>
     public static string ToMD5Encrypt(this string input, bool toUpper = false)
     {
-        using var md5 = MD5.Create();
         var buffer = Encoding.UTF8.GetBytes(input);
+#if NET45_OR_GREATER
+        using var md5 = MD5.Create();
         var MD5buffer = md5.ComputeHash(buffer);
+#endif
+#if NET6_0_OR_GREATER
+        var MD5buffer = MD5.HashData(buffer);
+#endif
         var builder = new StringBuilder();
         foreach (var item in MD5buffer)
         {
@@ -40,9 +45,14 @@ public static class SecurityExtension
     /// <returns>加密后的字符串</returns>
     public static string ToSHA256Encrypt(this string input, bool toUpper = false)
     {
-        using var sha256 = SHA256.Create();
         var buffer = Encoding.UTF8.GetBytes(input);
+#if NET45_OR_GREATER
+        using var sha256 = SHA256.Create();
         var SHA256buffer = sha256.ComputeHash(buffer);
+#endif
+#if NET6_0_OR_GREATER
+        var SHA256buffer = SHA256.HashData(buffer);
+#endif
         var builder = new StringBuilder();
         foreach (var item in SHA256buffer)
         {
