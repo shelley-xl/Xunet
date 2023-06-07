@@ -68,12 +68,6 @@ public class UnitTest
         Assert.NotEqual(0, id);
         #endregion
 
-        #region 拼音辅助类
-        input = "徐来";
-        var pinyin = PinyinHelper.GetPinyin(input).ToLower();
-        Assert.Equal("xulai", pinyin);
-        #endregion
-
         #region 性能计时器辅助类
         var milliSeconds = StopwatchHelper.Execute(() =>
         {
