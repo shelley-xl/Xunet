@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace System;
 
+#region 反射扩展类
 /// <summary>
 /// 反射扩展类
 /// </summary>
@@ -204,5 +205,6 @@ public static class ReflectionExtension
         return default;
     }
     #endregion
-}
+} 
+#endregion
 
