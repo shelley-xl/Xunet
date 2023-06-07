@@ -1,5 +1,3 @@
-using Xunet.Logging;
-
 namespace Xunet.Tests;
 
 public class UnitTest
@@ -83,10 +81,6 @@ public class UnitTest
             Thread.Sleep(100);
         });
         #endregion
-
-        LogManager.Info("这是一条测试日志");
-
-        Thread.Sleep(5000);
     }
 }
 
