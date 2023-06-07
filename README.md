@@ -162,7 +162,10 @@ LogManager.Info("这是一条测试日志");
 
 # 感谢
 
-[Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
-[Snowflake](https://github.com/twitter-archive/snowflake)
-[WebSocketSharp](https://github.com/sta/websocket-sharp)
-[TinyPinyin](https://github.com/hstarorg/TinyPinyin.Net)
+- [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+
+- [Snowflake](https://github.com/twitter-archive/snowflake)
+
+- [WebSocketSharp](https://github.com/sta/websocket-sharp)
+
+- [TinyPinyin](https://github.com/hstarorg/TinyPinyin.Net)
