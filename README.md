@@ -198,6 +198,9 @@ LogManager.Info("这是一条测试日志");
 2、缓存组件
 
 ```c#
+// 使用CSRedis;
+using Xunet.CSRedis;
+
  // 初始化Redis缓存
 RedisHelper.Initialization(new CSRedis.CSRedisClient("127.0.0.1:6379"));
 // 设置缓存
