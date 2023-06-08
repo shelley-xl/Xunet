@@ -7,10 +7,6 @@ Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些常�
 [![Xunet](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
 [![Xunet](https://img.shields.io/nuget/dt/Xunet.svg?style=flat-square)](https://www.nuget.org/stats/packages/Xunet?groupby=Version)
 
-```sh
-Install-Package Xunet
-```
-
 ## 扩展类
 
 1、日期时间扩展类
