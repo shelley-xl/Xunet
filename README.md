@@ -212,7 +212,8 @@ var user = await RedisHelper.GetAsync<User>("user");
 // 使用Dapper
 using Xunet.Dapper;
 
-var list = connection.Query<User>("select * from user;").ToList();
+// 查询
+var list = await connection.QueryAsync<User>("select * from user;");
 ```
 
 # 感谢
