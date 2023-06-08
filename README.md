@@ -1,6 +1,6 @@
 # 常用工具库
 
-Xunet 是 .NET 的通用工具库，包含[扩展方法](https://github.com/shelley-xl/Xunet#%E6%89%A9%E5%B1%95%E7%B1%BB)、[辅助类](https://github.com/shelley-xl/Xunet#%E8%BE%85%E5%8A%A9%E7%B1%BB)和一些[常用组件](https://github.com/shelley-xl/Xunet#%E7%BB%84%E4%BB%B6)，用于简化开发和提高工作效率。
+Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些常用组件，用于简化开发和提高工作效率。
 
 支持 .NET Framework 4.5、.NET 6.0、.NET 7.0
 
