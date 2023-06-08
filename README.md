@@ -206,9 +206,12 @@ await RedisHelper.SetAsync("user", new User { Name = "徐来" });
 var user = await RedisHelper.GetAsync<User>("user");
 ```
 
-3、ORM组件Dapper
+3、ORM组件
 
 ```c#
+// 使用Dapper
+using Xunet.Dapper;
+
 var list = connection.Query<User>("select * from user;").ToList();
 ```
 
