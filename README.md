@@ -117,6 +117,34 @@ var name = user.GetProperty<string>("Name");
 var namenew = user.SetProperty("Name", "徐来new");
 ```
 
+9、异常处理扩展类
+
+```c#
+var result = typeof(TestClass).TryCatch(
+    (x) =>
+    {
+        // 主要业务逻辑
+    },
+    (x) =>
+    {
+        // 异常处理
+    },
+    (x) =>
+    {
+        // 执行成功
+    });
+
+typeof(TestClass).TryFinally(
+    (x) => 
+    {
+        // 主要业务逻辑
+    },
+    (x) => 
+    {
+        // finally处理
+    });
+```
+
 ## 辅助类
 
 1、雪花ID
@@ -152,12 +180,36 @@ var milliSeconds = StopwatchHelper.Execute(() =>
 });
 ```
 
+5、数据计算
+
+```c#
+// 获取两个坐标的距离
+var distance = MathHelper.GetDistance(1, 2, 3, 4);
+```
+
 ## 组件
 
-日志组件
+1、日志组件
 
 ```c#
 LogManager.Info("这是一条测试日志");
+```
+
+2、缓存组件
+
+```c#
+ // 初始化Redis缓存
+RedisHelper.Initialization(new CSRedis.CSRedisClient("127.0.0.1:6379"));
+// 设置缓存
+await RedisHelper.SetAsync("user", new User { Name = "徐来" });
+// 获取缓存
+var user = await RedisHelper.GetAsync<User>("user");
+```
+
+3、ORM组件Dapper
+
+```c#
+var list = connection.Query<User>("select * from user;").ToList();
 ```
 
 # 感谢
@@ -169,3 +221,7 @@ LogManager.Info("这是一条测试日志");
 - [WebSocketSharp](https://github.com/sta/websocket-sharp)
 
 - [TinyPinyin](https://github.com/hstarorg/TinyPinyin.Net)
+
+- [Dapper](https://github.com/DapperLib/Dapper)
+
+- [CSRedis](https://github.com/2881099/csredis)
