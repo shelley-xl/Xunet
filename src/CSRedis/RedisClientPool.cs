@@ -369,7 +369,7 @@ namespace Xunet.CSRedis
                 var initTasks = new Task[b];
                 for (var c = 0; c < b; c++)
                 {
-                    initTasks[c] = TaskEx.Run(() =>
+                    initTasks[c] = Task.Run(() =>
                     {
                         try
                         {
