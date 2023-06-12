@@ -186,6 +186,16 @@ var milliSeconds = StopwatchHelper.Execute(() =>
 // 获取两个坐标的距离
 var distance = MathHelper.GetDistance(1, 2, 3, 4);
 ```
+6、IP转地区
+
+```c#
+// 说明：仅支持.NET 6.0 及以上版本
+// 需要依赖ip2region.xdb文件
+// https://github.com/lionsoul2014/ip2region/blob/master/data/ip2region.xdb
+
+// 根据IP查询地区
+var region = IP2RegionHelper.Search("ip地址");
+```
 
 ## 组件
 

@@ -7,9 +7,9 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.9.100</AssemblyVersion>
+		<AssemblyVersion>1.0.10.100</AssemblyVersion>
+		<Version>1.0.10</Version>
 		<FileVersion>1.0.0.0</FileVersion>
-		<Version>1.0.9</Version>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>徐来</Authors>
