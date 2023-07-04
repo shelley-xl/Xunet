@@ -2,7 +2,11 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
+#if NET45_OR_GREATER
 using System.Net;
+#endif
+
 using Xunet.Newtonsoft.Json.Linq;
 
 namespace System;
@@ -24,7 +28,9 @@ public static class HttpClientExtension
     public static string HttpGet(this string url, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -60,7 +66,9 @@ public static class HttpClientExtension
     public static async Task<string> HttpGetAsync(this string url, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -88,7 +96,9 @@ public static class HttpClientExtension
     public static string HttpPost(this string url, HttpContentType contentType, object? param = null, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -142,7 +152,9 @@ public static class HttpClientExtension
     public static Task<string> HttpPostAsync(this string url, HttpContentType contentType, object? param = null, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -185,7 +197,9 @@ public static class HttpClientExtension
     public static string HttpPut(this string url, HttpContentType contentType, object? param = null, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -240,7 +254,9 @@ public static class HttpClientExtension
     public static Task<string> HttpPutAsync(this string url, HttpContentType contentType, object? param = null, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -281,7 +297,9 @@ public static class HttpClientExtension
     public static string HttpDelete(this string url, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
@@ -318,7 +336,9 @@ public static class HttpClientExtension
     public static async Task<string> HttpDeleteAsync(this string url, string? cookies = null)
     {
         var useCookies = cookies.IsNullOrEmpty();
+#if NET45_OR_GREATER
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+#endif
         var handler = new HttpClientHandler
         {
             UseCookies = useCookies,
