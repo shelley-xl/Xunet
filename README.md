@@ -197,6 +197,31 @@ var distance = MathHelper.GetDistance(1, 2, 3, 4);
 var region = IP2RegionHelper.Search("ip地址");
 ```
 
+7、钉钉
+
+```c#
+// 发送应用消息
+var access_token = DingtalkHelper.GetAccessToken("appkey", "appsecret");
+DingtalkHelper.SendMarkdownMessage(new SendMarkdownMessageRequest
+{
+    AgentId = 123456,
+    AccessToken = access_token,
+    Title = "恐龙抗狼",
+    Text = "我没K，我没K，我没K，布鲁布鲁biu~",
+    UserIds = new List<string> { "userId001" }
+});
+
+// 发送群机器人消息
+DingtalkHelper.SendMarkdownMessageForGroupRobot(new SendMarkdownMessageForGroupRobotRequest
+{
+    Webhook = "",
+    Secret = "",
+    Title = "恐龙抗狼",
+    Text = "我没K，我没K，我没K，布鲁布鲁biu~",
+    AtUserIds = new List<string> { "userId001" }
+});
+```
+
 ## 组件
 
 1、日志组件
