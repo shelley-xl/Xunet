@@ -222,6 +222,36 @@ DingtalkHelper.SendMarkdownMessageForGroupRobot(new SendMarkdownMessageForGroupR
 });
 ```
 
+8、Redis
+
+```c#
+// 初始化Redis缓存
+RedisHelper.Initialization(new CSRedis.CSRedisClient("127.0.0.1:6379"));
+// 设置缓存
+await RedisHelper.SetAsync("user", new User { Name = "徐来" });
+// 获取缓存
+var user = await RedisHelper.GetAsync<User>("user");
+```
+
+9、机器
+
+```c#
+// 获取本机IP地址
+var localIPAddress = MachineHelper.GetLocalIPAddress();
+// 获取公网IP地址
+var publicIPAddress = MachineHelper.GetPublicIPAddress();
+// 获取机器码
+var machineCode = MachineHelper.GetMachineCode();
+// 获取随机端口号
+var port = MachineHelper.GetRandomPort();
+// 检查端口号是否被占用
+var isPortInUse = MachineHelper.IsPortInUse(port);
+// 获取当前机器的注册码
+var registerCode = MachineHelper.GetRegisterCode("32位秘钥", 30);
+// 验证注册码是否有效
+var verifyRegisterCode = MachineHelper.VerifyRegisterCode("32位秘钥", registerCode);
+```
+
 ## 组件
 
 1、日志组件
@@ -236,7 +266,7 @@ LogManager.Info("这是一条测试日志");
 // 使用CSRedis;
 using Xunet.CSRedis;
 
- // 初始化Redis缓存
+// 初始化Redis缓存
 RedisHelper.Initialization(new CSRedis.CSRedisClient("127.0.0.1:6379"));
 // 设置缓存
 await RedisHelper.SetAsync("user", new User { Name = "徐来" });
