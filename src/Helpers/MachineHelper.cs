@@ -61,11 +61,11 @@ public class MachineHelper
     /// <param name="key">32位秘钥</param>
     /// <param name="expireDays">过期天数</param>
     /// <returns></returns>
-    public static string GetRegisterCode(string key, int expireDays)
+    public static string GetRegisterCode(string key, string machineCode, int expireDays)
     {
-        var machineCode = GetMachineCode();
-        var expireTime = DateTime.Now.AddDays(expireDays).ToTimeStamp();
-        var registerTime = DateTime.Now.ToTimeStamp();
+        var now = GetNetDateTime();
+        var expireTime = now.AddDays(expireDays).ToTimeStamp();
+        var registerTime = now.ToTimeStamp();
         var registerCode = $"{machineCode}&{expireTime}&{registerTime}";
         return registerCode.ToAESEncrypt(key);
     }
@@ -78,6 +78,7 @@ public class MachineHelper
     /// <returns></returns>
     public static bool VerifyRegisterCode(string key, string registerCode)
     {
+        var now = GetNetDateTime();
         var machineCode = GetMachineCode();
         var code = registerCode.ToAESDecrypt(key);
         var codeArray = code.Split('&');
@@ -88,8 +89,8 @@ public class MachineHelper
         if (machineCode != codeMachineCode) return false;
         var expireTime = long.Parse(codeExpireTime);
         var registerTime = long.Parse(codeRegisterTime);
-        if (DateTime.Now.ToTimeStamp() > expireTime) return false;
-        if (registerTime > DateTime.Now.ToTimeStamp()) return false;
+        if (now.ToTimeStamp() > expireTime) return false;
+        if (registerTime > now.ToTimeStamp()) return false;
         return true;
     }
 
@@ -180,7 +181,10 @@ public class MachineHelper
         return cpuId;
     }
 
-    //获取本机所有占用端口
+    /// <summary>
+    /// 获取本机所有占用端口
+    /// </summary>
+    /// <returns></returns>
     static IList GetUsedPort()
     {
         //获取本地计算机的网络连接和通信统计数据的信息
@@ -195,23 +199,49 @@ public class MachineHelper
         //返回本地计算机上的Internet协议版本4(IPV4 传输控制协议(TCP)连接的信息。
         TcpConnectionInformation[] tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
 
+        // 显示本地计算机上的所有端口
         IList allPorts = new ArrayList();
 
+        // 添加TCP端口
         foreach (IPEndPoint ep in ipsTCP)
         {
             allPorts.Add(ep.Port);
         }
 
+        // 添加UDP端口
         foreach (IPEndPoint ep in ipsUDP)
         {
             allPorts.Add(ep.Port);
         }
 
+        // 添加TCP连接端口
         foreach (TcpConnectionInformation conn in tcpConnInfoArray)
         {
             allPorts.Add(conn.LocalEndPoint.Port);
         }
 
         return allPorts;
+    }
+
+    /// <summary>
+    /// 获取网络时间
+    /// </summary>
+    /// <returns></returns>
+    public static DateTime GetNetDateTime()
+    {
+        try
+        {
+            var url = "http://www.baidu.com";
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.Timeout = 3000;
+            var response = (HttpWebResponse)request.GetResponse();
+            var date = response.Headers["date"];
+            return DateTime.Parse(date);
+        }
+        catch
+        {
+            throw new Exception("网络错误，请检查网络");
+        }
     }
 }
