@@ -246,8 +246,8 @@ var machineCode = MachineHelper.GetMachineCode();
 var port = MachineHelper.GetRandomPort();
 // 检查端口号是否被占用
 var isPortInUse = MachineHelper.IsPortInUse(port);
-// 获取当前机器的注册码
-var registerCode = MachineHelper.GetRegisterCode("32位秘钥", 30);
+// 获取注册码
+var registerCode = MachineHelper.GetRegisterCode("32位秘钥", machineCode, 30);
 // 验证注册码是否有效
 var verifyRegisterCode = MachineHelper.VerifyRegisterCode("32位秘钥", registerCode);
 ```
