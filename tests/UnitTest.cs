@@ -75,6 +75,20 @@ public class UnitTest
             Thread.Sleep(100);
         });
         #endregion
+
+        JobManager.Initialize();
+        JobManager.AddJob(() =>
+        {
+
+            Console.WriteLine("每5秒运行一次");
+
+        }, (x) =>
+        {
+            x.WithName("Name");
+            x.ToRunEveryWithCron("30 10 * * 6-7");
+        });
+
+        Console.ReadKey();
     }
 }
 

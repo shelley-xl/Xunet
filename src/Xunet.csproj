@@ -7,8 +7,8 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.15.108</AssemblyVersion>
-		<Version>1.0.15</Version>
+		<AssemblyVersion>1.0.16.108</AssemblyVersion>
+		<Version>1.0.16</Version>
 		<FileVersion>1.0.0.0</FileVersion>
 		<VersionPrefix></VersionPrefix>
 		<VersionSuffix></VersionSuffix>
@@ -66,7 +66,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<NoWarn Condition="'$(SignAssembly)'!='true'">$(NoWarn);CA1416;CS8714;CS8620;CS8619;CP0003;CS8618;CS8625;CS1570;CS8600;CS0419;CS8602;CS8603;CS8604;CS8765;CS1574;CS1591;CS1572;CS1591;CS8767;CS8601;CS1710;CS1573;CS8622;CS0168;CS1584;CS1658;CS1587;CS0649;CS0618;SYSLIB0014;SYSLIB0012;CS8073;SYSLIB0006;CS8605;SYSLIB0003;SYSLIB0010;CS0672;SYSLIB0023;SYSLIB0021;SYSLIB0028;1701;1702;1591;</NoWarn>
+		<NoWarn Condition="'$(SignAssembly)'!='true'">$(NoWarn);IDE0057;CA1416;CS8714;CS8620;CS8619;CP0003;CS8618;CS8625;CS1570;CS8600;CS0419;CS8602;CS8603;CS8604;CS8765;CS1574;CS1591;CS1572;CS1591;CS8767;CS8601;CS1710;CS1573;CS8622;CS0168;CS1584;CS1658;CS1587;CS0649;CS0618;SYSLIB0014;SYSLIB0012;CS8073;SYSLIB0006;CS8605;SYSLIB0003;SYSLIB0010;CS0672;SYSLIB0023;SYSLIB0021;SYSLIB0028;1701;1702;1591;</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -91,10 +91,6 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="FluentScheduler\" />
 	</ItemGroup>
 
 </Project>

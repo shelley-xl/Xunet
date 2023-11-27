@@ -316,6 +316,12 @@ JobManager.AddJob(() => DoWork(), (x) =>
     x.WithName("JobName");
     x.ToRunEvery(1).Months().On(18).At(10, 30).WeekdaysOnly(); // 每月18号的10:30执行（仅周一到周五）
 });
+// 基于TimeCrontab，集成后支持Cron表达式
+JobManager.AddJob(() => DoWork(), (x) =>
+{
+    x.WithName("JobName");
+    x.ToRunEveryWithCron("30 10 * * ?"); // 每天的10:30执行
+});
 ```
 
 # 感谢
@@ -333,3 +339,5 @@ JobManager.AddJob(() => DoWork(), (x) =>
 - [CSRedis](https://github.com/2881099/csredis)
 
 - [FluentScheduler](https://github.com/fluentscheduler/FluentScheduler)
+
+- [TimeCrontab](https://github.com/MonkSoul/TimeCrontab)

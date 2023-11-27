@@ -18,9 +18,9 @@
 
         private static bool _useUtc = false;
 
-        private static Timer _timer = new Timer(state => ScheduleJobs(), null, Timeout.Infinite, Timeout.Infinite);
+        private static readonly Timer _timer = new(state => ScheduleJobs(), null, Timeout.Infinite, Timeout.Infinite);
 
-        private static ScheduleCollection _schedules = new ScheduleCollection();
+        private static readonly ScheduleCollection _schedules = new();
 
         private static readonly ISet<Tuple<Schedule, Task>> _running = new HashSet<Tuple<Schedule, Task>>();
 
@@ -58,7 +58,7 @@
         {
             private get
             {
-                return (_jobFactory = _jobFactory ?? new JobFactory());
+                return (_jobFactory ??= new JobFactory());
             }
             set
             {
@@ -101,11 +101,7 @@
         {
             return () =>
             {
-                var job = jobFactory();
-
-                if (job == null)
-                    throw new InvalidOperationException("The given Func<IJob> returned null.");
-
+                var job = jobFactory() ?? throw new InvalidOperationException("The given Func<IJob> returned null.");
                 try
                 {
                     job.Execute();
@@ -119,9 +115,7 @@
 
         private static void DisposeIfNeeded(IJob job)
         {
-            var disposable = job as IDisposable;
-
-            if (disposable != null)
+            if (job is IDisposable disposable)
                 disposable.Dispose();
         }
 
@@ -155,7 +149,7 @@
         public static void Initialize(params Registry[] registries)
         {
             if (registries == null)
-                throw new ArgumentNullException("registries");
+                throw new ArgumentNullException(nameof(registries));
 
             CalculateNextRun(registries.SelectMany(r => r.Schedules)).ToList().ForEach(RunJob);
             Start();
@@ -184,7 +178,12 @@
         {
             Stop();
 
+#if NET45_OR_GREATER
             var tasks = new Task[0];
+#endif
+#if NET6_0_OR_GREATER
+            var tasks = Array.Empty<Task>();
+#endif
 
             // Even though Stop() was just called, a scheduling may be happening right now, that's why the loop.
             // Simply waiting for the tasks inside the lock causes a deadlock (a task may try to remove itself from
@@ -252,10 +251,10 @@
         public static void AddJob(Action job, Action<Schedule> schedule)
         {
             if (job == null)
-                throw new ArgumentNullException("job");
+                throw new ArgumentNullException(nameof(job));
 
             if (schedule == null)
-                throw new ArgumentNullException("schedule");
+                throw new ArgumentNullException(nameof(schedule));
 
             AddJob(schedule, new Schedule(job));
         }
@@ -268,12 +267,12 @@
         public static void AddJob(IJob job, Action<Schedule> schedule)
         {
             if (job == null)
-                throw new ArgumentNullException("job");
+                throw new ArgumentNullException(nameof(job));
 
             if (schedule == null)
-                throw new ArgumentNullException("schedule");
+                throw new ArgumentNullException(nameof(schedule));
 
-            AddJob(schedule, new Schedule(JobManager.GetJobAction(job)));
+            AddJob(schedule, new Schedule(GetJobAction(job)));
         }
 
         /// <summary>
@@ -284,9 +283,9 @@
         public static void AddJob<T>(Action<Schedule> schedule) where T : IJob
         {
             if (schedule == null)
-                throw new ArgumentNullException("schedule");
+                throw new ArgumentNullException(nameof(schedule));
 
-            AddJob(schedule, new Schedule(JobManager.GetJobAction<T>()) { Name = typeof(T).Name });
+            AddJob(schedule, new Schedule(GetJobAction<T>()) { Name = typeof(T).Name });
         }
 
         private static void AddJob(Action<Schedule> jobSchedule, Schedule schedule)
@@ -442,16 +441,11 @@
             {
                 var start = Now;
 
-                if (JobStart != null)
+                JobStart?.Invoke(new JobStartInfo
                 {
-                    JobStart(
-                        new JobStartInfo
-                        {
-                            Name = schedule.Name,
-                            StartTime = start,
-                        }
-                    );
-                }
+                    Name = schedule.Name,
+                    StartTime = start,
+                });
 
                 var stopwatch = new Stopwatch();
 
@@ -464,9 +458,7 @@
                 {
                     if (JobException != null)
                     {
-                        var aggregate = e as AggregateException;
-
-                        if (aggregate != null && aggregate.InnerExceptions.Count == 1)
+                        if (e is AggregateException aggregate && aggregate.InnerExceptions.Count == 1)
                             e = aggregate.InnerExceptions.Single();
 
                         JobException(
@@ -485,18 +477,13 @@
                         _running.Remove(tuple);
                     }
 
-                    if (JobEnd != null)
+                    JobEnd?.Invoke(new JobEndInfo
                     {
-                        JobEnd(
-                            new JobEndInfo
-                            {
-                                Name = schedule.Name,
-                                StartTime = start,
-                                Duration = stopwatch.Elapsed,
-                                NextRun = schedule.NextRun,
-                            }
-                        );
-                    }
+                        Name = schedule.Name,
+                        StartTime = start,
+                        Duration = stopwatch.Elapsed,
+                        NextRun = schedule.NextRun,
+                    });
                 }
             }, TaskCreationOptions.PreferFairness);
 
