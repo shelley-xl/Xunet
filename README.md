@@ -284,6 +284,40 @@ using Xunet.Dapper;
 var list = await connection.QueryAsync<User>("select * from user;");
 ```
 
+4、定时任务组件
+
+```c#
+// 使用FluentScheduler
+using Xunet.FluentScheduler;
+
+// 初始化定时任务
+JobManager.Initialize();
+// 添加定时任务：示例一
+JobManager.AddJob(() => DoWork(), (x) =>
+{
+    x.WithName("JobName");
+    x.ToRunEvery(1).Days().At(10, 30); // 每天的10:30执行
+});
+// 添加定时任务：示例二
+JobManager.AddJob(() => DoWork(), (x) =>
+{
+    x.WithName("JobName");
+    x.ToRunEvery(1).Weekdays().At(10, 30); // 每周一到周五的10:30执行
+});
+// 添加定时任务：示例三
+JobManager.AddJob(() => DoWork(), (x) =>
+{
+    x.WithName("JobName");
+    x.ToRunEvery(1).Weeks().On(DayOfWeek.Friday).At(10, 30); // 每周五的10:30执行
+});
+// 添加定时任务：示例四
+JobManager.AddJob(() => DoWork(), (x) =>
+{
+    x.WithName("JobName");
+    x.ToRunEvery(1).Months().On(18).At(10, 30).WeekdaysOnly(); // 每月18号的10:30执行（仅周一到周五）
+});
+```
+
 # 感谢
 
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
@@ -297,3 +331,5 @@ var list = await connection.QueryAsync<User>("select * from user;");
 - [Dapper](https://github.com/DapperLib/Dapper)
 
 - [CSRedis](https://github.com/2881099/csredis)
+
+- [FluentScheduler](https://github.com/fluentscheduler/FluentScheduler)

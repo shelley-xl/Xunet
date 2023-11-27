@@ -93,4 +93,8 @@
 		</None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="FluentScheduler\" />
+	</ItemGroup>
+
 </Project>
