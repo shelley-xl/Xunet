@@ -71,7 +71,7 @@ public static class TryCatchExtensions
         catch (Exception obj)
         {
             failureAction(obj);
-            result = default(TResult);
+            result = default;
         }
         return result;
     }
