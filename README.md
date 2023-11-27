@@ -292,31 +292,16 @@ using Xunet.FluentScheduler;
 
 // 初始化定时任务
 JobManager.Initialize();
-// 添加定时任务：示例一
+// 添加定时任务
 JobManager.AddJob(() => DoWork(), (x) =>
 {
     x.WithName("JobName");
     x.ToRunEvery(1).Days().At(10, 30); // 每天的10:30执行
-});
-// 添加定时任务：示例二
-JobManager.AddJob(() => DoWork(), (x) =>
-{
-    x.WithName("JobName");
     x.ToRunEvery(1).Weekdays().At(10, 30); // 每周一到周五的10:30执行
-});
-// 添加定时任务：示例三
-JobManager.AddJob(() => DoWork(), (x) =>
-{
-    x.WithName("JobName");
     x.ToRunEvery(1).Weeks().On(DayOfWeek.Friday).At(10, 30); // 每周五的10:30执行
-});
-// 添加定时任务：示例四
-JobManager.AddJob(() => DoWork(), (x) =>
-{
-    x.WithName("JobName");
     x.ToRunEvery(1).Months().On(18).At(10, 30).WeekdaysOnly(); // 每月18号的10:30执行（仅周一到周五）
 });
-// 基于TimeCrontab，集成后支持Cron表达式
+// 扩展：基于TimeCrontab，集成后支持Cron表达式
 JobManager.AddJob(() => DoWork(), (x) =>
 {
     x.WithName("JobName");
