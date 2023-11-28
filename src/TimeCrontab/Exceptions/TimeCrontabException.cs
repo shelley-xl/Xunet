@@ -17,7 +17,7 @@ using System;
 namespace Xunet.TimeCrontab;
 
 /// <summary>
-/// Xunet.TimeCrontab 模块异常类
+/// TimeCrontab 模块异常类
 /// </summary>
 public sealed class TimeCrontabException : Exception
 {

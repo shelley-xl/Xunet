@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Xunet.TimeCrontab;
 
     /// <summary>
     /// A job schedule.
@@ -73,7 +72,7 @@
         public Schedule AndThen(Action job)
         {
             if (job == null)
-                throw new ArgumentNullException(nameof(job));
+                throw new ArgumentNullException("job");
 
             Jobs.Add(job);
             return this;
@@ -86,7 +85,7 @@
         public Schedule AndThen(IJob job)
         {
             if (job == null)
-                throw new ArgumentNullException(nameof(job));
+                throw new ArgumentNullException("job");
 
             Jobs.Add(JobManager.GetJobAction(job));
             return this;
@@ -99,7 +98,7 @@
         public Schedule AndThen(Func<IJob> job)
         {
             if (job == null)
-                throw new ArgumentNullException(nameof(job));
+                throw new ArgumentNullException("job");
 
             Jobs.Add(JobManager.GetJobAction(job));
             return this;
@@ -131,32 +130,6 @@
         public TimeUnit ToRunEvery(int interval)
         {
             return new TimeUnit(this, interval);
-        }
-
-        /// <summary>
-        /// 通过Cron表达式执行定时任务
-        /// </summary>
-        /// <param name="cron">Cron表达式</param>
-        /// <param name="format">Cron表达式格式化类型</param>
-        public void ToRunEveryWithCron(string cron, CronFormat format = CronFormat.Default)
-        {
-            CalculateNextRun = x =>
-            {
-                var cronStringFormat = format switch
-                {
-                    CronFormat.Default => CronStringFormat.Default,
-                    CronFormat.WithYears => CronStringFormat.WithYears,
-                    CronFormat.WithSeconds => CronStringFormat.WithSeconds,
-                    CronFormat.WithSecondsAndYears => CronStringFormat.WithSecondsAndYears,
-                    _ => CronStringFormat.Default
-                };
-
-                var crontab = Crontab.Parse(cron, cronStringFormat);
-
-                var nextRun = crontab.GetNextOccurrence(JobManager.Now);
-
-                return nextRun;
-            };
         }
 
         /// <summary>
@@ -209,7 +182,7 @@
         /// </summary>
         public Schedule NonReentrant()
         {
-            Reentrant ??= new object();
+            Reentrant = Reentrant ?? new object();
             return this;
         }
 
@@ -228,35 +201,5 @@
         {
             Disabled = false;
         }
-    }
-
-    /// <summary>
-    /// Cron表达式格式化类型
-    /// </summary>
-    public enum CronFormat
-    {
-        /// <summary>
-        /// 默认格式
-        /// </summary>
-        /// <remarks>书写顺序：分 时 日 月 周</remarks>
-        Default = 0,
-
-        /// <summary>
-        /// 带年份格式
-        /// </summary>
-        /// <remarks>书写顺序：分 时 日 月 周 年</remarks>
-        WithYears = 1,
-
-        /// <summary>
-        /// 带秒格式
-        /// </summary>
-        /// <remarks>书写顺序：秒 分 时 日 月 周</remarks>
-        WithSeconds = 2,
-
-        /// <summary>
-        /// 带秒和年格式
-        /// </summary>
-        /// <remarks>书写顺序：秒 分 时 日 月 周 年</remarks>
-        WithSecondsAndYears = 3
     }
 }
