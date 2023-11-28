@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace Xunet.TimeCrontab;
 
 /// <summary>
-/// Xunet.TimeCrontab 模块常量
+/// TimeCrontab 模块常量
 /// </summary>
 internal static class Constants
 {
