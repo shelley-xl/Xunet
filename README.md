@@ -6,7 +6,7 @@ Xunet 是 .NET 的通用工具库，包含扩展方法、辅助类和一些常�
 
 Xunet is a general purpose tool library for .NET,contains extension methods,helper classes and some components,which is used to simplify development and improve work efficiency.
 
-Support .NET Framework 4.5、.NET 6.0、.NET 7.0
+Support .NET Framework 4.5+、.NET 6.0、.NET 7.0
 
 [![Nuget](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
 [![Downloads](https://img.shields.io/nuget/dt/Xunet.svg?style=flat-square)](https://www.nuget.org/stats/packages/Xunet?groupby=Version)
