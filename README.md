@@ -11,6 +11,7 @@ Support .NET Framework 4.5、.NET 6.0、.NET 7.0
 [![Nuget](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
 [![Downloads](https://img.shields.io/nuget/dt/Xunet.svg?style=flat-square)](https://www.nuget.org/stats/packages/Xunet?groupby=Version)
 [![License](https://img.shields.io/github/license/shelley-xl/Xunet.svg)](https://github.com/shelley-xl/Xunet/blob/master/LICENSE)
+![Vistors](https://visitor-badge.laobi.icu/badge?page_id=https://github.com/shelley-xl)
 
 ## 扩展类
 
