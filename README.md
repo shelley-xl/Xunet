@@ -318,6 +318,7 @@ JobManager.AddJob(() => DoWork(), (x) =>
 5、AOP组件
 
 ```c#
+// 说明：仅支持.NET 6.0 及以上版本
 using Xunet.AOP;
 using Xunet.AOP.Filters;
 
