@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.18.2</AssemblyVersion>
+		<AssemblyVersion>1.0.18.3</AssemblyVersion>
 		<Version>1.0.18</Version>
 		<FileVersion>1.0.0.0</FileVersion>
 		<VersionPrefix></VersionPrefix>
