@@ -1,2 +1,8 @@
 global using Xunit;
-global using Xunet.Helpers;
+
+namespace Xunet.Tests;
+
+public class Usings 
+{
+
+}

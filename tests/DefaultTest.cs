@@ -1,6 +1,8 @@
+using Xunet.Helpers;
+
 namespace Xunet.Tests;
 
-public class UnitTest
+public class DefaultTest
 {
     [Fact]
     public void Test()
@@ -77,5 +79,3 @@ public class UnitTest
         #endregion
     }
 }
-
-public class User { public string? Name { get; set; } };
