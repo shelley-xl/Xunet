@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if NET6_0_OR_GREATER
+
+using System;
 
 namespace Xunet.AOP.Filters;
 
@@ -8,3 +10,5 @@ public abstract class BeforeActionAttribute : Attribute
     public abstract int Order { get; set; }
     public abstract object? AopAction(object?[]? args, object? args2);
 }
+
+#endif
