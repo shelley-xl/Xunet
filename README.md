@@ -112,6 +112,7 @@ var isNotNull = input.IsNotNullOrEmpty();
 var isTel = input.IsPhoneNumber();
 // ...
 ```
+
 8、反射扩展类
 
 ```c#
@@ -121,34 +122,6 @@ var user = new User { Name = "徐来" };
 var name = user.GetProperty<string>("Name");
 // 设置Name属性
 var namenew = user.SetProperty("Name", "徐来new");
-```
-
-9、异常处理扩展类
-
-```c#
-var result = typeof(TestClass).TryCatch(
-    (x) =>
-    {
-        // 主要业务逻辑
-    },
-    (x) =>
-    {
-        // 异常处理
-    },
-    (x) =>
-    {
-        // 执行成功
-    });
-
-typeof(TestClass).TryFinally(
-    (x) => 
-    {
-        // 主要业务逻辑
-    },
-    (x) => 
-    {
-        // finally处理
-    });
 ```
 
 ## 辅助类
@@ -169,14 +142,7 @@ var id2 = SnowflakeHelper.NextIdString();
 var pinyin = PinyinHelper.GetPinyin("徐来");
 ```
 
-3、读取配置文件
-
-```c#
-// 获取配置
-var value = AppSettingsHelper.GetValueOrDefault("key");
-```
-
-4、性能计时器
+3、性能计时器
 
 ```c#
 var milliSeconds = StopwatchHelper.Execute(() =>
@@ -186,13 +152,7 @@ var milliSeconds = StopwatchHelper.Execute(() =>
 });
 ```
 
-5、数据计算
-
-```c#
-// 获取两个坐标的距离
-var distance = MathHelper.GetDistance(1, 2, 3, 4);
-```
-6、IP转地区
+4、IP转地区
 
 ```c#
 // 说明：仅支持.NET 6.0 及以上版本
@@ -203,7 +163,7 @@ var distance = MathHelper.GetDistance(1, 2, 3, 4);
 var region = IP2RegionHelper.Search("ip地址");
 ```
 
-7、钉钉
+5、钉钉
 
 ```c#
 // 发送应用消息
@@ -228,7 +188,7 @@ DingtalkHelper.SendMarkdownMessageForGroupRobot(new SendMarkdownMessageForGroupR
 });
 ```
 
-8、Redis
+6、Redis
 
 ```c#
 // 初始化Redis缓存
@@ -239,7 +199,7 @@ await RedisHelper.SetAsync("user", new User { Name = "徐来" });
 var user = await RedisHelper.GetAsync<User>("user");
 ```
 
-9、机器
+7、机器
 
 ```c#
 // 获取本机IP地址

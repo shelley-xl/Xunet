@@ -70,10 +70,11 @@ public static class SecurityExtension
     /// <param name="plainText">明文</param>
     /// <param name="key">秘钥</param>
     /// <param name="iv">偏移量</param>
+    /// <param name="isHex">是否返回16进制</param>
     /// <returns>密文</returns>
-    public static string ToAESEncrypt(this string plainText, string? key = null, string? iv = null)
+    public static string ToAESEncrypt(this string plainText, string key = null, string iv = null, bool isHex = false)
     {
-        if (key.IsNullOrEmpty()) key = @")O[NB]6,YF}+efcaj{+oESb9d8>Z'e9M";
+        if (key.IsNullOrEmpty()) key = @")O[NB]6,YF}+efcaj{+oESbld8>Z'e9M";
         if (iv.IsNullOrEmpty()) iv = @"L+\~f4,Ir)b$=pkf";
         byte[] toEncryptArray = Encoding.UTF8.GetBytes(plainText);
         var encryptKey = Encoding.UTF8.GetBytes(key!);
@@ -86,7 +87,20 @@ public static class SecurityExtension
         aesAlg.IV = ivArray;
         using var encryptor = aesAlg.CreateEncryptor(encryptKey, aesAlg.IV);
         byte[] resultArray = encryptor.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
-        return Convert.ToBase64String(resultArray);
+        if (isHex)
+        {
+            // 将二进制转换为16进制
+            var builder = new StringBuilder();
+            for (int i = 0; i < resultArray.Length; i++)
+            {
+                builder.Append(string.Format("{0:X2}", resultArray[i]));
+            }
+            return builder.ToString();
+        }
+        else
+        {
+            return Convert.ToBase64String(resultArray);
+        }
     }
     #endregion
 
@@ -97,13 +111,27 @@ public static class SecurityExtension
     /// <param name="cipherText">密文</param>
     /// <param name="key">秘钥</param>
     /// <param name="iv">偏移量</param>
+    /// <param name="isHex">是否解密16进制</param>
     /// <returns>明文</returns>
-    public static string ToAESDecrypt(this string cipherText, string? key = null, string? iv = null)
+    public static string ToAESDecrypt(this string cipherText, string key = null, string iv = null, bool isHex = false)
     {
-        if (key.IsNullOrEmpty()) key = @")O[NB]6,YF}+efcaj{+oESb9d8>Z'e9M";
+        if (key.IsNullOrEmpty()) key = @")O[NB]6,YF}+efcaj{+oESbld8>Z'e9M";
         if (iv.IsNullOrEmpty()) iv = @"L+\~f4,Ir)b$=pkf";
         var ivByte = Encoding.UTF8.GetBytes(iv!);
-        byte[] toEncryptArray = Convert.FromBase64String(cipherText);
+        byte[] toEncryptArray;
+        if (isHex)
+        {
+            // 将16进制转换为二进制
+            toEncryptArray = new byte[cipherText.Length / 2];
+            for (int i = 0; i < toEncryptArray.Length; i++)
+            {
+                toEncryptArray[i] = Convert.ToByte(cipherText.Substring(i * 2, 2), 16);
+            }
+        }
+        else
+        {
+            toEncryptArray = Convert.FromBase64String(cipherText);
+        }
         var decryptKey = Encoding.UTF8.GetBytes(key!);
         using var aesAlg = Aes.Create();
         aesAlg.Mode = CipherMode.CBC;
@@ -195,6 +223,114 @@ public static class SecurityExtension
         /// </summary>
         public string? PrivateKey { get; set; }
     }
+    #endregion
+
+    #region 获取摩斯密码
+    public static string ToMorseEncrypt(this string plainText)
+    {
+        int i;
+        string ret = string.Empty;
+        if (plainText != null && (plainText = plainText.ToUpper()).Length > 0)
+            foreach (char asc in plainText)
+                if ((i = Find(asc.ToString(), 0)) > -1)
+                    ret += " " + CodeTable[i, 1];
+        return ret.Trim();
+    }
+    #endregion
+
+    #region 获取摩斯密码明文
+    public static string ToMorseDecrypt(this string cipherText)
+    {
+        int i;
+        string[] splits;
+        string ret = string.Empty;
+        if (cipherText != null && (splits = cipherText.Split(' ')).Length > 0)
+        {
+            foreach (string split in splits)
+                if ((i = Find(split, 1)) > -1)
+                    ret += CodeTable[i, 0];
+            return ret;
+        }
+        return "{#}";
+    } 
+    #endregion
+
+    #region 查找
+    private static int Find(string str, int cols)
+    {
+        int i = 0, len = CodeTable.Length / 2; // len / rank
+        while (i < len)
+        {
+            if (CodeTable[i, cols] == str)
+                return i;
+            i++;
+        };
+        return -1;
+    }
+    #endregion
+
+    #region 密码表
+    private static readonly string[,] CodeTable =
+    {
+        {"A",".-"},
+        {"B","-..."},
+        {"C","-.-."},
+        {"D","-.."},
+        {"E","."},
+        {"E","..-.."},
+        {"F","..-."},
+        {"G","--."},
+        {"H","...."},
+        {"I",".."},
+        {"J",".---"},
+        {"K","-.-"},
+        {"L",".-.."},
+        {"M","--"},
+        {"N","-."},
+        {"O","---"},
+        {"P",".--."},
+        {"Q","--.-"},
+        {"R",".-."},
+        {"S","..."},
+        {"T","-"},
+        {"U","..-"},
+        {"V","...-"},
+        {"W",".--"},
+        {"X","-..-"},
+        {"Y","-.--"},
+        {"Z","--.."},
+        {"0","-----"},
+        {"1",".----"},
+        {"2","..---"},
+        {"3","...--"},
+        {"4","....-"},
+        {"5","....."},
+        {"6","-...."},
+        {"7","--..."},
+        {"8","---.."},
+        {"9","----."},
+        {".",".-.-.-"},
+        {",","--..--"},
+        {":","---..."},
+        {"?","..--.."},
+        {"\'",".----."},
+        {"-","-....-"},
+        {"/","-..-."},
+        {"(","-.--."},
+        {")","-.--.-"},
+        {"\"",".-..-."},
+        {"=","-...-"},
+        {"+",".-.-."},
+        {"*","-..-"},
+        {"@",".--.-."},
+        {"{UNDERSTOOD}","...-."},
+        {"{ERROR}","........"},
+        {"{INVITATION TO TRANSMIT}","-.-"},
+        {"{WAIT}",".-..."},
+        {"{END OF WORK}","...-.-"},
+        {"{STARTING SIGNAL}","-.-.-"},
+        {" ","\u2423"}
+    };
     #endregion
 }
 #endregion

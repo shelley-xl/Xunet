@@ -31,6 +31,15 @@ public class DefaultTest
         Assert.Equal(input, aesText);
 
         /*
+         * AES 加解密（随机生成key和iv）16进制
+         */
+        var randomKey = 32.NextString(2);
+        var randomIv = 16.NextString(2);
+        var aesValueRD = input.ToAESEncrypt(randomKey, randomIv, true);
+        var aesTextRD = aesValueRD.ToAESDecrypt(randomKey, randomIv, true);
+        Assert.Equal(input, aesTextRD);
+
+        /*
          * RSA 加解密
          */
         // 获取RSA公钥和私钥（2048位）
@@ -40,6 +49,13 @@ public class DefaultTest
         // 私钥解密
         var rsaText = rsaValue.ToRSADecrypt(key.PrivateKey!);
         Assert.Equal(input, rsaText);
+
+        /*
+         * 摩斯密码
+         */
+        var morseValue = input.ToMorseEncrypt();
+        var morseText = morseValue.ToMorseDecrypt();
+        Assert.Equal(input, morseText);
         #endregion
 
         #region String扩展类
@@ -76,6 +92,7 @@ public class DefaultTest
             // do something
             Thread.Sleep(100);
         });
+        Assert.True(milliSeconds >= 100);
         #endregion
     }
 }

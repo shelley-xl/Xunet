@@ -7,11 +7,10 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<AssemblyVersion>1.0.18.6</AssemblyVersion>
-		<Version>1.0.18</Version>
-		<FileVersion>1.0.0.0</FileVersion>
-		<VersionPrefix></VersionPrefix>
-		<VersionSuffix></VersionSuffix>
+		<Version>1.0.19</Version>
+		<TotalDays>$([System.DateTime]::Now.Date.Subtract($([System.DateTime]::Parse($([System.String]::Format("{0}-1-1",2024))))).TotalDays)</TotalDays>
+		<AssemblyVersion>$(Version).$(TotalDays)</AssemblyVersion>
+		<FileVersion>$(Version).$(TotalDays)</FileVersion>
 		<Authors>徐来</Authors>
 		<Company>徐来</Company>
 		<Title>Xunet</Title>
