@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region 反射扩展类
 /// <summary>

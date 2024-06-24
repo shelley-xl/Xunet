@@ -1,6 +1,6 @@
 ﻿using Xunet.Newtonsoft.Json;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region Json扩展类
 /// <summary>

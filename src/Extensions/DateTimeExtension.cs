@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region 日期时间扩展类
 /// <summary>

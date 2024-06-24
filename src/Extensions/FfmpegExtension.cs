@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region Ffmpeg扩展类
 /// <summary>

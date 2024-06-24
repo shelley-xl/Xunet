@@ -4,6 +4,7 @@ using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using Xunet.Extensions;
 
 namespace Xunet.Helpers;
 

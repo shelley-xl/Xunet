@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region String扩展类
 /// <summary>

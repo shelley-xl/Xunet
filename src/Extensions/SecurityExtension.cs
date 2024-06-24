@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region 加解密扩展类
 /// <summary>

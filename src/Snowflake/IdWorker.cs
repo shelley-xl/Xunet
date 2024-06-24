@@ -17,6 +17,7 @@
  */
 
 using System;
+using Xunet.Extensions;
 
 namespace Xunet.Snowflake;
 

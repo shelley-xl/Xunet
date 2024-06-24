@@ -3,6 +3,7 @@ using System.Text;
 using System;
 using System.Collections.Generic;
 using Xunet.Newtonsoft.Json.Linq;
+using Xunet.Extensions;
 
 namespace Xunet.Helpers;
 

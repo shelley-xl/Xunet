@@ -1,4 +1,5 @@
 using Xunet.Helpers;
+using Xunet.Extensions;
 
 namespace Xunet.Tests;
 

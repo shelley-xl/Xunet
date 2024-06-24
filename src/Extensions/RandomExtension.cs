@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Xunet;
+namespace Xunet.Extensions;
 
 #region 随机数扩展类
 /// <summary>
