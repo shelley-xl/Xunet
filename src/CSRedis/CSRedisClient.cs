@@ -26,10 +26,10 @@ namespace Xunet.CSRedis
         internal string SentinelMasterName;
         internal string SentinelMasterValue;
         internal bool IsMultiNode => Nodes.Count > 1 && SentinelManager == null;
-        private object NodesLock = new object();
+        private readonly object NodesLock = new object();
         public ConcurrentDictionary<ushort, ushort> SlotCache = new ConcurrentDictionary<ushort, ushort>();
 
-        private Func<JsonSerializerSettings> JsonSerializerSettings = () =>
+        private readonly Func<JsonSerializerSettings> JsonSerializerSettings = () =>
         {
             var st = new JsonSerializerSettings();
             st.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
@@ -41,11 +41,11 @@ namespace Xunet.CSRedis
         /// <summary>
 		/// 自定义序列化(全局默认)
 		/// </summary>
-		public static Func<object, string> Serialize;
+		private readonly static Func<object, string> Serialize;
         /// <summary>
         /// 自定义反序列化(全局默认)
         /// </summary>
-        public static Func<string, Type, object> Deserialize;
+        private readonly static Func<string, Type, object> Deserialize;
 
         /// <summary>
         /// 自定义序列化
@@ -56,8 +56,8 @@ namespace Xunet.CSRedis
         /// </summary>
         public Func<string, Type, object> CurrentDeserialize;
 
-        DateTime _dt1970 = new DateTime(1970, 1, 1);
-        Random _rnd = new Random();
+        readonly DateTime _dt1970 = new(1970, 1, 1);
+        readonly Random _rnd = new();
 
         #region 序列化写入，反序列化
         internal string SerializeObject(object value)
@@ -113,7 +113,7 @@ namespace Xunet.CSRedis
         }
         internal T DeserializeRedisValueInternal<T>(byte[] value)
         {
-            if (value == null) return default(T);
+            if (value == null) return default;
             var type = typeof(T);
             var typename = type.ToString().TrimEnd(']');
             if (typename == "System.Byte[") return (T)Convert.ChangeType(value, type);
@@ -121,7 +121,7 @@ namespace Xunet.CSRedis
             if (typename == "System.Boolean[") return (T)Convert.ChangeType(value.Select(a => a == 49).ToArray(), type);
 
             var valueStr = Nodes.First().Value.Encoding.GetString(value);
-            if (string.IsNullOrEmpty(valueStr)) return default(T);
+            if (string.IsNullOrEmpty(valueStr)) return default;
             if (type.IsValueType)
             {
                 bool isNullable = typename.StartsWith("System.Nullable`1[");
@@ -190,7 +190,7 @@ namespace Xunet.CSRedis
 
                 if (isElse == false)
                 {
-                    if (obj == null) return default(T);
+                    if (obj == null) return default;
                     return (T)obj;
                     //return (T)Convert.ChangeType(obj, typeof(T));
                 }
@@ -261,14 +261,18 @@ namespace Xunet.CSRedis
         protected CSRedisClient(Func<string, string> NodeRule, string[] sentinels, bool readOnly, SentinelMasterConverter convert = null, params string[] connectionStrings)
         {
             if (connectionStrings == null || !connectionStrings.Any()) throw new Exception("Redis ConnectionString 未设置");
-            var tmppoolPolicy = new RedisClientPoolPolicy();
-            tmppoolPolicy.ConnectionString = connectionStrings.First() + ",preheat=false";
+            var tmppoolPolicy = new RedisClientPoolPolicy
+            {
+                ConnectionString = connectionStrings.First() + ",preheat=false"
+            };
 
             if (sentinels?.Any() == true)
             {
                 if (connectionStrings.Length > 1) throw new Exception("Redis Sentinel 不可设置多个 ConnectionString");
-                SentinelManager = new RedisSentinelManager(readOnly, sentinels);
-                SentinelManager.SentinelMasterConverter = convert;
+                SentinelManager = new RedisSentinelManager(readOnly, sentinels)
+                {
+                    SentinelMasterConverter = convert
+                };
                 SentinelManager.Connected += (s, e) =>
                 {
                     if (!string.IsNullOrEmpty(tmppoolPolicy._password))
@@ -348,7 +352,7 @@ namespace Xunet.CSRedis
                     pool = null;
                     throw new Exception($"Node: {nodeKey} 无法添加");
                 }
-                if (firstPool == null) firstPool = pool;
+                firstPool ??= pool;
             }
             this.NodesServerManager = new NodesServerManagerProvider(this);
             if (firstPool._policy._testCluster)
@@ -407,7 +411,7 @@ namespace Xunet.CSRedis
         }
 
         bool BackgroundGetSentinelMasterValueIng = false;
-        object BackgroundGetSentinelMasterValueIngLock = new object();
+        readonly object BackgroundGetSentinelMasterValueIngLock = new();
         bool BackgroundGetSentinelMasterValue()
         {
             if (SentinelManager == null) return false;
@@ -749,7 +753,7 @@ namespace Xunet.CSRedis
         #region 分区方式 Execute
         internal T ExecuteScalar<T>(string key, Func<Object<RedisClient>, string, T> hander)
         {
-            if (key == null) return default(T);
+            if (key == null) return default;
             var pool = NodeRuleRaw == null || Nodes.Count == 1 ? Nodes.First().Value : (Nodes.TryGetValue(NodeRuleRaw(key), out var b) ? b : Nodes.First().Value);
             key = string.Concat(pool.Prefix, key);
             return GetAndExecute(pool, conn => hander(conn, key));
@@ -780,7 +784,7 @@ namespace Xunet.CSRedis
                     var vals = hander(conn, keys);
                     for (var z = 0; z < r.Value.Count; z++)
                     {
-                        ret[r.Value[z].Item2] = vals == null || z >= vals.Length ? default(T) : vals[z];
+                        ret[r.Value[z].Item2] = vals == null || z >= vals.Length ? default : vals[z];
                     }
                     return 0;
                 });
@@ -916,7 +920,7 @@ namespace Xunet.CSRedis
         public NodesServerManagerProvider NodesServerManager { get; set; }
         public partial class NodesServerManagerProvider
         {
-            private CSRedisClient _csredis;
+            private readonly CSRedisClient _csredis;
 
             public NodesServerManagerProvider(CSRedisClient csredis)
             {
@@ -1098,8 +1102,8 @@ namespace Xunet.CSRedis
         public NodeServerManagerProvider NodeServerManager(string node) => new NodeServerManagerProvider(this, GetNodeOrThrowNotFound(node));
         public partial class NodeServerManagerProvider
         {
-            private CSRedisClient _csredis;
-            private RedisClientPool _pool;
+            private readonly CSRedisClient _csredis;
+            private readonly RedisClientPool _pool;
 
             public NodeServerManagerProvider(CSRedisClient csredis, RedisClientPool pool)
             {
@@ -4381,11 +4385,11 @@ return 0", $"CSRedisPSubscribe{psubscribeKey}", "", trylong.ToString());
     public class CSRedisClientLock : IDisposable
     {
 
-        CSRedisClient _client;
-        string _name;
-        string _value;
-        int _timeoutSeconds;
-        Timer _autoDelayTimer;
+        readonly CSRedisClient _client;
+        readonly string _name;
+        readonly string _value;
+        readonly int _timeoutSeconds;
+        readonly Timer _autoDelayTimer;
 
         public CSRedisClientLock(CSRedisClient rds, string name, string value, int timeoutSeconds, double refreshSeconds, bool autoDelay)
         {

@@ -10,7 +10,7 @@ public class AOPTest
     {
         IUserService userService = new UserService();
         userService = TransformProxy.GetDynamicProxy(userService);
-        var result = userService.Create("Processing", new List<string>());
+        var result = userService.Create("Processing", []);
         Assert.Equal("CheckIP=>CheckLogin=>Processing=>LoginLog=>OperateLog", string.Join("=>", result));
     }
 }
