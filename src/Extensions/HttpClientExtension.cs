@@ -9,7 +9,7 @@ using System.Net;
 
 using Xunet.Newtonsoft.Json.Linq;
 
-namespace System;
+namespace Xunet;
 
 #region HttpClient扩展类
 /// <summary>

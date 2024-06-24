@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace System;
+namespace Xunet;
 
 #region 随机数扩展类
 /// <summary>

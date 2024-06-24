@@ -1,4 +1,6 @@
-﻿namespace System;
+﻿using System;
+
+namespace Xunet;
 
 #region 日期时间扩展类
 /// <summary>

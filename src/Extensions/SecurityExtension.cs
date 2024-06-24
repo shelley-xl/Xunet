@@ -1,7 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 
-namespace System;
+namespace Xunet;
 
 #region 加解密扩展类
 /// <summary>
