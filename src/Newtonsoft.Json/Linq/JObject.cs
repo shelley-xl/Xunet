@@ -51,7 +51,7 @@ namespace Xunet.Newtonsoft.Json.Linq
     /// Represents a JSON object.
     /// </summary>
     /// <example>
-    ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
+    ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
     /// </example>
     public partial class JObject : JContainer, IDictionary<string, JToken?>, INotifyPropertyChanged
 #if HAVE_COMPONENT_MODEL
@@ -93,7 +93,12 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// </summary>
         /// <param name="other">A <see cref="JObject"/> object to copy from.</param>
         public JObject(JObject other)
-            : base(other)
+            : base(other, settings: null)
+        {
+        }
+
+        internal JObject(JObject other, JsonCloneSettings? settings)
+            : base(other, settings)
         {
         }
 
@@ -135,7 +140,7 @@ namespace Xunet.Newtonsoft.Json.Linq
             return _properties.IndexOfReference(item);
         }
 
-        internal override bool InsertItem(int index, JToken? item, bool skipParentCheck)
+        internal override bool InsertItem(int index, JToken? item, bool skipParentCheck, bool copyAnnotations)
         {
             // don't add comments to JObject, no name to reference comment by
             if (item != null && item.Type == JTokenType.Comment)
@@ -143,7 +148,7 @@ namespace Xunet.Newtonsoft.Json.Linq
                 return false;
             }
 
-            return base.InsertItem(index, item, skipParentCheck);
+            return base.InsertItem(index, item, skipParentCheck, copyAnnotations);
         }
 
         internal override void ValidateToken(JToken o, JToken? existing)
@@ -244,9 +249,9 @@ namespace Xunet.Newtonsoft.Json.Linq
 #endif
         }
 
-        internal override JToken CloneToken()
+        internal override JToken CloneToken(JsonCloneSettings? settings)
         {
-            return new JObject(this);
+            return new JObject(this, settings);
         }
 
         /// <summary>
@@ -440,7 +445,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         ///     <paramref name="json"/> is not valid JSON.
         /// </exception>
         /// <example>
-        ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
+        ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
         /// </example>
         public new static JObject Parse(string json)
         {
@@ -458,7 +463,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         ///     <paramref name="json"/> is not valid JSON.
         /// </exception>
         /// <example>
-        ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
+        ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParse" title="Parsing a JSON Object from Text" />
         /// </example>
         public new static JObject Parse(string json, JsonLoadSettings? settings)
         {
@@ -521,23 +526,23 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Gets the <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.
+        /// Gets the <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        /// <returns>The <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.</returns>
+        /// <returns>The <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.</returns>
         public JToken? GetValue(string? propertyName)
         {
             return GetValue(propertyName, StringComparison.Ordinal);
         }
 
         /// <summary>
-        /// Gets the <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.
+        /// Gets the <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.
         /// The exact property name will be searched for first and if no matching property is found then
         /// the <see cref="StringComparison"/> will be used to match a property.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
         /// <param name="comparison">One of the enumeration values that specifies how the strings will be compared.</param>
-        /// <returns>The <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.</returns>
+        /// <returns>The <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.</returns>
         public JToken? GetValue(string? propertyName, StringComparison comparison)
         {
             if (propertyName == null)
@@ -552,7 +557,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Tries to get the <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.
+        /// Tries to get the <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.
         /// The exact property name will be searched for first and if no matching property is found then
         /// the <see cref="StringComparison"/> will be used to match a property.
         /// </summary>
@@ -609,7 +614,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Tries to get the <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> with the specified property name.
+        /// Tries to get the <see cref="Newtonsoft.Json.Linq.JToken"/> with the specified property name.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
         /// <param name="value">The value.</param>

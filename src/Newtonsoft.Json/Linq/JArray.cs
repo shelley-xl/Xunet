@@ -36,7 +36,7 @@ namespace Xunet.Newtonsoft.Json.Linq
     /// Represents a JSON array.
     /// </summary>
     /// <example>
-    ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
+    ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
     /// </example>
     public partial class JArray : JContainer, IList<JToken>
     {
@@ -66,7 +66,12 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// </summary>
         /// <param name="other">A <see cref="JArray"/> object to copy from.</param>
         public JArray(JArray other)
-            : base(other)
+            : base(other, settings: null)
+        {
+        }
+
+        internal JArray(JArray other, JsonCloneSettings? settings)
+            : base(other, settings)
         {
         }
 
@@ -93,9 +98,9 @@ namespace Xunet.Newtonsoft.Json.Linq
             return (node is JArray t && ContentsEqual(t));
         }
 
-        internal override JToken CloneToken()
+        internal override JToken CloneToken(JsonCloneSettings? settings = null)
         {
-            return new JArray(this);
+            return new JArray(this, settings);
         }
 
         /// <summary>
@@ -146,7 +151,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// <param name="json">A <see cref="String"/> that contains JSON.</param>
         /// <returns>A <see cref="JArray"/> populated from the string that contains JSON.</returns>
         /// <example>
-        ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
+        ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
         /// </example>
         public new static JArray Parse(string json)
         {
@@ -161,7 +166,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// If this is <c>null</c>, default load settings will be used.</param>
         /// <returns>A <see cref="JArray"/> populated from the string that contains JSON.</returns>
         /// <example>
-        ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
+        ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\LinqToJsonTests.cs" region="LinqToJsonCreateParseArray" title="Parsing a JSON Array from Text" />
         /// </example>
         public new static JArray Parse(string json, JsonLoadSettings? settings)
         {
@@ -254,7 +259,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> at the specified index.
+        /// Gets or sets the <see cref="Newtonsoft.Json.Linq.JToken"/> at the specified index.
         /// </summary>
         /// <value></value>
         public JToken this[int index]
@@ -309,7 +314,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// </exception>
         public void Insert(int index, JToken item)
         {
-            InsertItem(index, item, false);
+            InsertItem(index, item, false, copyAnnotations: true);
         }
 
         /// <summary>

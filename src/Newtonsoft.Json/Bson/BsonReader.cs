@@ -39,7 +39,7 @@ namespace Xunet.Newtonsoft.Json.Bson
     /// <summary>
     /// Represents a reader that provides fast, non-cached, forward-only access to serialized BSON data.
     /// </summary>
-    [Obsolete("BSON reading and writing has been moved to its own package. See https://www.nuget.org/packages/Xunet.Newtonsoft.Json.Bson for more details.")]
+    [Obsolete("BSON reading and writing has been moved to its own package. See https://www.nuget.org/packages/Newtonsoft.Json.Bson for more details.")]
     public class BsonReader : JsonReader
     {
         private const int MaxCharBytesSize = 128;

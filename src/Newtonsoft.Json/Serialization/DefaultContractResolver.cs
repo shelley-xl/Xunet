@@ -425,7 +425,7 @@ namespace Xunet.Newtonsoft.Json.Serialization
             }
 
             // serializing DirectoryInfo without ISerializable will stackoverflow
-            // https://github.com/JamesNK/Xunet.Newtonsoft.Json/issues/1541
+            // https://github.com/JamesNK/Newtonsoft.Json/issues/1541
             if (Array.IndexOf(BlacklistedTypeNames, objectType.FullName) != -1)
             {
                 contract.OnSerializingCallbacks.Add(ThrowUnableToSerializeError);
@@ -1412,7 +1412,7 @@ namespace Xunet.Newtonsoft.Json.Serialization
             // warning - this method use to cause errors with Intellitrace. Retest in VS Ultimate after changes
             IValueProvider valueProvider;
 
-#if !(PORTABLE40 || PORTABLE || DOTNET || NETSTANDARD2_0 || NET6_0_OR_GREATER)
+#if !(PORTABLE40 || PORTABLE || DOTNET || NETSTANDARD2_0)
             if (DynamicCodeGeneration)
             {
                 valueProvider = new DynamicValueProvider(member);

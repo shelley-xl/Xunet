@@ -131,7 +131,7 @@ namespace Xunet.Newtonsoft.Json.Linq
             }
         }
 
-        internal abstract JToken CloneToken();
+        internal abstract JToken CloneToken(JsonCloneSettings? settings);
         internal abstract bool DeepEquals(JToken node);
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Xunet.Newtonsoft.Json.Linq
             }
 
             int index = _parent.IndexOfItem(this);
-            _parent.TryAddInternal(index + 1, content, false);
+            _parent.TryAddInternal(index + 1, content, false, copyAnnotations: true);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Xunet.Newtonsoft.Json.Linq
             }
 
             int index = _parent.IndexOfItem(this);
-            _parent.TryAddInternal(index, content, false);
+            _parent.TryAddInternal(index, content, false, copyAnnotations: true);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         {
             JToken? token = this[key];
 
-            // null check to fix MonoTouch issue - https://github.com/dolbz/Xunet.Newtonsoft.Json/commit/a24e3062846b30ee505f3271ac08862bb471b822
+            // null check to fix MonoTouch issue - https://github.com/dolbz/Newtonsoft.Json/commit/a24e3062846b30ee505f3271ac08862bb471b822
             return token == null ? default : Extensions.Convert<JToken, T>(token);
         }
 
@@ -488,7 +488,7 @@ namespace Xunet.Newtonsoft.Json.Linq
 
         #region Cast from operators
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> to <see cref="System.Boolean"/>.
+        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.Boolean"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -512,7 +512,7 @@ namespace Xunet.Newtonsoft.Json.Linq
 
 #if HAVE_DATE_TIME_OFFSET
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> to <see cref="System.DateTimeOffset"/>.
+        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.DateTimeOffset"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -856,7 +856,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> to <see cref="System.SByte"/>.
+        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.SByte"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -1290,7 +1290,7 @@ namespace Xunet.Newtonsoft.Json.Linq
         }
 
         /// <summary>
-        /// Performs an explicit conversion from <see cref="Xunet.Newtonsoft.Json.Linq.JToken"/> to <see cref="System.UInt64"/>.
+        /// Performs an explicit conversion from <see cref="Newtonsoft.Json.Linq.JToken"/> to <see cref="System.UInt64"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
@@ -2443,7 +2443,17 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// <returns>A new instance of the <see cref="JToken"/>.</returns>
         public JToken DeepClone()
         {
-            return CloneToken();
+            return CloneToken(settings: null);
+        }
+
+        /// <summary>
+        /// Creates a new instance of the <see cref="JToken"/>. All child tokens are recursively cloned.
+        /// </summary>
+        /// <param name="settings">A <see cref="JsonCloneSettings"/> object to configure cloning settings.</param>
+        /// <returns>A new instance of the <see cref="JToken"/>.</returns>
+        public JToken DeepClone(JsonCloneSettings settings)
+        {
+            return CloneToken(settings);
         }
 
         /// <summary>

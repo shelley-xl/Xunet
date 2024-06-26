@@ -1794,7 +1794,7 @@ namespace Xunet.Newtonsoft.Json
                         }
 #endif
 
-                        // write an unknown null value, fix https://github.com/JamesNK/Xunet.Newtonsoft.Json/issues/1460
+                        // write an unknown null value, fix https://github.com/JamesNK/Newtonsoft.Json/issues/1460
                         if (value == null)
                         {
                             return writer.WriteNullAsync(cancellationToken);

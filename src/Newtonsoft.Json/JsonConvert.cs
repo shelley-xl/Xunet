@@ -48,7 +48,7 @@ namespace Xunet.Newtonsoft.Json
     /// Provides methods for converting between .NET types and JSON types.
     /// </summary>
     /// <example>
-    ///   <code lang="cs" source="..\Src\Xunet.Newtonsoft.Json.Tests\Documentation\SerializationTests.cs" region="SerializeObject" title="Serializing and Deserializing JSON with JsonConvert" />
+    ///   <code lang="cs" source="..\Src\Newtonsoft.Json.Tests\Documentation\SerializationTests.cs" region="SerializeObject" title="Serializing and Deserializing JSON with JsonConvert" />
     /// </example>
     public static class JsonConvert
     {
@@ -593,7 +593,7 @@ namespace Xunet.Newtonsoft.Json
         }
 
         /// <summary>
-        /// Serializes the specified object to a JSON string using a type, formatting and <see cref="JsonSerializerSettings"/>.
+        /// Serializes the specified object to a JSON string using a type and <see cref="JsonSerializerSettings"/>.
         /// </summary>
         /// <param name="value">The object to serialize.</param>
         /// <param name="settings">The <see cref="JsonSerializerSettings"/> used to serialize the object.

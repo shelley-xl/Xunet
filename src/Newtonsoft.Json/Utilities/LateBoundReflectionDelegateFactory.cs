@@ -46,7 +46,7 @@ namespace Xunet.Newtonsoft.Json.Utilities
             if (method is ConstructorInfo c)
             {
                 // don't convert to method group to avoid medium trust issues
-                // https://github.com/JamesNK/Xunet.Newtonsoft.Json/issues/476
+                // https://github.com/JamesNK/Newtonsoft.Json/issues/476
                 return a => c.Invoke(a);
             }
 

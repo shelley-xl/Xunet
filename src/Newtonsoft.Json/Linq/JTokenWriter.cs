@@ -281,6 +281,12 @@ namespace Xunet.Newtonsoft.Json.Linq
         /// <param name="value">The <see cref="String"/> value to write.</param>
         public override void WriteValue(string? value)
         {
+            if (value == null)
+            {
+                WriteNull();
+                return;
+            }
+            
             base.WriteValue(value);
             AddJValue(new JValue(value), JsonToken.String);
         }
@@ -502,7 +508,7 @@ namespace Xunet.Newtonsoft.Json.Linq
                     }
                 }
 
-                JToken value = tokenReader.CurrentToken!.CloneToken();
+                JToken value = tokenReader.CurrentToken!.CloneToken(settings: null);
 
                 if (_parent != null)
                 {

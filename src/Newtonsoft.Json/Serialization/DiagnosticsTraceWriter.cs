@@ -59,12 +59,12 @@ namespace Xunet.Newtonsoft.Json.Serialization
                 {
                     lock (listener)
                     {
-                        listener.TraceEvent(eventCache, "Xunet.Newtonsoft.Json", traceEventType, 0, message);
+                        listener.TraceEvent(eventCache, "Newtonsoft.Json", traceEventType, 0, message);
                     }
                 }
                 else
                 {
-                    listener.TraceEvent(eventCache, "Xunet.Newtonsoft.Json", traceEventType, 0, message);
+                    listener.TraceEvent(eventCache, "Newtonsoft.Json", traceEventType, 0, message);
                 }
 
                 if (DiagnosticsTrace.AutoFlush)

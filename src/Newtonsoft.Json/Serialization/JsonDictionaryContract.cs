@@ -131,7 +131,7 @@ namespace Xunet.Newtonsoft.Json.Serialization
                 {
                     // ConcurrentDictionary<,> + IDictionary setter + null value = error
                     // wrap to use generic setter
-                    // https://github.com/JamesNK/Xunet.Newtonsoft.Json/issues/1582
+                    // https://github.com/JamesNK/Newtonsoft.Json/issues/1582
                     Type typeDefinition = NonNullableUnderlyingType.GetGenericTypeDefinition();
                     if (typeDefinition.FullName == JsonTypeReflector.ConcurrentDictionaryTypeName)
                     {

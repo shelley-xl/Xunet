@@ -23,6 +23,9 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+using System;
+using System.Diagnostics;
+
 namespace Xunet.Newtonsoft.Json.Utilities
 {
     internal static class BoxedPrimitives
@@ -87,15 +90,49 @@ namespace Xunet.Newtonsoft.Json.Utilities
         internal static readonly object Int64_7 = 7L;
         internal static readonly object Int64_8 = 8L;
 
-        internal static object Get(decimal value) => value == decimal.Zero ? DecimalZero : value;
+        internal static object Get(decimal value)
+        {
+            // Decimals can contain trailing zeros. For example 1 vs 1.0. Unfortunatly, Equals doesn't check for trailing zeros.
+            // There isn't a way to find out if a decimal has trailing zeros in older frameworks without calling ToString.
+            // Don't provide a cached boxed decimal value in older frameworks.
 
+#if NET6_0_OR_GREATER
+            // Number of bits scale is shifted by.
+            const int ScaleShift = 16;
+        
+            if (value == decimal.Zero)
+            {
+                Span<int> bits = stackalloc int[4];
+                int written = decimal.GetBits(value, bits);
+                MiscellaneousUtils.Assert(written == 4);
+
+                byte scale = (byte)(bits[3] >> ScaleShift);
+                // Only use cached boxed value if value is zero and there is zero or one trailing zeros.
+                if (scale == 0)
+                {
+                    return DecimalZero;
+                }
+                else if (scale == 1)
+                {
+                    return DecimalZeroWithTrailingZero;
+                }
+            }
+#endif
+
+            return value;
+        }
+
+#if NET6_0_OR_GREATER
         private static readonly object DecimalZero = decimal.Zero;
+        private static readonly object DecimalZeroWithTrailingZero = 0.0m;
+#endif
 
         internal static object Get(double value)
         {
             if (value == 0.0d)
             {
-                return DoubleZero;
+                // Double supports -0.0. Detection logic from https://stackoverflow.com/a/4739883/11829.
+                return double.IsNegativeInfinity(1.0 / value) ? DoubleNegativeZero : DoubleZero;
             }
             if (double.IsInfinity(value))
             {
@@ -111,6 +148,7 @@ namespace Xunet.Newtonsoft.Json.Utilities
         internal static readonly object DoubleNaN = double.NaN;
         internal static readonly object DoublePositiveInfinity = double.PositiveInfinity;
         internal static readonly object DoubleNegativeInfinity = double.NegativeInfinity;
-        internal static readonly object DoubleZero = (double)0;
+        internal static readonly object DoubleZero = 0.0d;
+        internal static readonly object DoubleNegativeZero = -0.0d;
     }
 }
