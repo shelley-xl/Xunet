@@ -15,40 +15,36 @@ public static class StringExtension
     /// </summary>
     /// <param name="this"></param>
     /// <returns></returns>
-    public static bool IsNullOrEmpty(this string? str)
-        => string.IsNullOrEmpty(str);
+    public static bool IsNullOrEmpty(this string? @this) => string.IsNullOrEmpty(@this);
 
     /// <summary>
     /// 判断字符串是否非空且不为null
     /// </summary>
     /// <param name="this"></param>
     /// <returns></returns>
-    public static bool IsNotNullOrEmpty(this string? str)
-        => !string.IsNullOrEmpty(str);
+    public static bool IsNotNullOrEmpty(this string? @this) => !string.IsNullOrEmpty(@this);
 
     /// <summary>
     /// 判断字符串是否为空（含空格）或者null
     /// </summary>
     /// <param name="this"></param>
     /// <returns></returns>
-    public static bool IsNullOrWhiteSpace(this string? str)
-        => string.IsNullOrWhiteSpace(str);
+    public static bool IsNullOrWhiteSpace(this string? @this) => string.IsNullOrWhiteSpace(@this);
 
     /// <summary>
     /// 判断字符串是否非空（含空格）且不为null
     /// </summary>
     /// <param name="this"></param>
     /// <returns></returns>
-    public static bool IsNotNullOrWhiteSpace(this string? str)
-        => !string.IsNullOrWhiteSpace(str);
+    public static bool IsNotNullOrWhiteSpace(this string? @this) => !string.IsNullOrWhiteSpace(@this);
 
     /// <summary>
     /// 是否是数字
     /// </summary>
     /// <param name="this"></param>
     /// <returns></returns>
-    public static bool IsNumber(this string? str)
-        => new Regex(@"\d+").IsMatch(str ?? "");
+    public static bool IsNumber(this string? @this)
+        => new Regex(@"\d+").IsMatch(@this ?? "");
 
     /// <summary>
     /// 是否是手机号
@@ -118,8 +114,5 @@ public static class StringExtension
         }
         return sb.ToString();
     }
-
-    public static bool IsMatch(this string? str, string pattern)
-        => Regex.IsMatch(str, pattern);
 }
 #endregion
