@@ -379,3 +379,5 @@ public class OperateLogAttribute : AfterActionAttribute
 - [FluentScheduler](https://github.com/fluentscheduler/FluentScheduler)
 
 - [TimeCrontab](https://github.com/MonkSoul/TimeCrontab)
+
+- [MiniExcel](https://github.com/mini-software/MiniExcel)
