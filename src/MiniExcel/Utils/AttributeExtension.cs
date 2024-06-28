@@ -12,7 +12,7 @@
            Func<TAttribute, TValue> selector) where TAttribute : Attribute
         {
             var attr = attrType.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault() as TAttribute;
-            return GetValueOrDefault(selector, attr);
+            return GetValueOrDefault(selector, attr!);
         }
 
         private static TValue GetValueOrDefault<TAttribute, TValue>
@@ -43,7 +43,7 @@
             where TAttribute : Attribute
         {
             TAttribute attr = Attribute.GetCustomAttribute(prop, typeof(TAttribute), isInherit) as TAttribute;
-            return GetValueOrDefault(selector, attr);
+            return GetValueOrDefault(selector, attr!);
         }
 
         internal static bool IsUseAttribute<TAttribute>(this PropertyInfo prop)
