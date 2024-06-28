@@ -256,7 +256,7 @@ namespace Xunet.MiniExcel.OpenXml
             }
             else
             {
-                maxRowIndex = rowCount.Value + (_printHeader && rowCount > 0 ? 1 : 0);
+                maxRowIndex = rowCount!.Value + (_printHeader && rowCount > 0 ? 1 : 0);
                 writer.Write(WorksheetXml.Dimension(GetDimensionRef(maxRowIndex, maxColumnIndex)));
             }
 
