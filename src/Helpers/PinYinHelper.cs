@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Xunet.TinyPinyin;
 
 namespace Xunet.Helpers;
 

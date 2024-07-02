@@ -1,4 +1,6 @@
-﻿namespace Xunet.Helpers;
+﻿using Xunet.Snowflake;
+
+namespace Xunet.Helpers;
 
 /// <summary>
 /// 雪花ID辅助类
