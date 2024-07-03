@@ -1,4 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -370,5 +373,34 @@ public enum HttpContentType
     /// </summary>
     [Description("form-data")]
     FormData = 2
+}
+#endregion
+
+#region HttpClientFactory
+/// <summary>
+/// HttpClientFactory
+/// </summary>
+public class HttpClientFactory
+{
+    static readonly ConcurrentDictionary<string, HttpClient> Clients = new();
+
+    public static void AddHttpClient(string name, Action<HttpClient> configureClient)
+    {
+        var client = new HttpClient();
+        configureClient(client);
+        if (!Clients.TryAdd(name, client))
+        {
+            throw new InvalidOperationException("the name already exists,please replace with another.");
+        }
+    }
+
+    public static HttpClient CreateClient(string name)
+    {
+        if (!Clients.TryGetValue(name, out HttpClient client))
+        {
+            throw new KeyNotFoundException("the name does not exist,please AddHttpClient first.");
+        }
+        return client;
+    }
 }
 #endregion
