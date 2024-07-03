@@ -1,4 +1,4 @@
-﻿namespace Xunet.Tests;
+﻿namespace Xunet.Tests.Models;
 
 public class User
 {
