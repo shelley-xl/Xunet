@@ -48,6 +48,17 @@ var result2 = await url.HttpPutAsync(HttpContentType.ApplicationJson,
 new { id = "参数1", name = "参数2" });
 // DELETE请求
 var result = await url.HttpDeleteAsync();
+
+// 简单HttpClientFactory实现
+// 添加
+HttpClientFactory.AddHttpClient("baidu", x =>
+{
+    x.BaseAddress = new Uri("https://www.baidu.com");
+});
+// 创建
+var client = HttpClientFactory.CreateClient("baidu");
+// 使用
+var result = client.GetAsync(url).Result;
 ```
 
 4、Json扩展类
@@ -360,6 +371,14 @@ public class OperateLogAttribute : AfterActionAttribute
         return null;
     }
 }
+```
+
+6、Excel组件
+
+```c#
+using Xunet.MiniExcels;
+
+var list = MiniExcel.Query<User>(path).ToList();
 ```
 
 ## 感谢
