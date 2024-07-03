@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xunet.MiniExcel.OpenXml.Models
+namespace Xunet.MiniExcels.OpenXml.Models
 {
     internal class DrawingDto
     {

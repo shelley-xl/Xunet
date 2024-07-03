@@ -1,6 +1,6 @@
 ﻿using System.IO.Compression;
 
-namespace Xunet.MiniExcel.Zip
+namespace Xunet.MiniExcels.Zip
 {
     internal class ZipPackageInfo
     {

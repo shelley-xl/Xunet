@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Xunet.MiniExcel.Utils
+namespace Xunet.MiniExcels.Utils
 {
     using System.Xml;
 

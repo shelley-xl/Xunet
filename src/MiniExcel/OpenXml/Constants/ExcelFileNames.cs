@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel.OpenXml.Constants
+﻿namespace Xunet.MiniExcels.OpenXml.Constants
 {
     internal static class ExcelFileNames
     {

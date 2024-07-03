@@ -2,7 +2,7 @@ using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Xunet.MiniExcel
+namespace Xunet.MiniExcels
 {
     public class MemberSetter
     {

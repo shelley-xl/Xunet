@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel
+﻿namespace Xunet.MiniExcels
 {
     using OpenXml;
     using System;

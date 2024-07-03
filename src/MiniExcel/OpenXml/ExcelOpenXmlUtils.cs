@@ -1,6 +1,6 @@
-﻿namespace Xunet.MiniExcel.OpenXml
+﻿namespace Xunet.MiniExcels.OpenXml
 {
-    using Xunet.MiniExcel.Utils;
+    using Xunet.MiniExcels.Utils;
     using System;
 #if DEBUG
     public

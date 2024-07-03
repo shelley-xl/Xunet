@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel
+﻿namespace Xunet.MiniExcels
 {
     using System;
     using System.Collections.Generic;

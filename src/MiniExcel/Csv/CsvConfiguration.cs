@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace Xunet.MiniExcel.Csv
+namespace Xunet.MiniExcels.Csv
 {
     public class CsvConfiguration : Configuration
     {

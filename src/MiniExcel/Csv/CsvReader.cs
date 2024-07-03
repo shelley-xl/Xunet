@@ -1,5 +1,5 @@
-using Xunet.MiniExcel.OpenXml;
-using Xunet.MiniExcel.Utils;
+using Xunet.MiniExcels.OpenXml;
+using Xunet.MiniExcels.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Xunet.MiniExcel.Csv
+namespace Xunet.MiniExcels.Csv
 {
     internal class CsvReader : IExcelReader
     {

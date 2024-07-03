@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xunet.MiniExcel.Exceptions
+namespace Xunet.MiniExcels.Exceptions
 {
     public class ExcelInvalidCastException : InvalidCastException
     {

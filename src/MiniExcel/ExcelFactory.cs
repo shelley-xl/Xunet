@@ -1,7 +1,7 @@
-﻿namespace Xunet.MiniExcel
+﻿namespace Xunet.MiniExcels
 {
-    using Xunet.MiniExcel.Csv;
-    using Xunet.MiniExcel.OpenXml;
+    using Xunet.MiniExcels.Csv;
+    using Xunet.MiniExcels.OpenXml;
     using System;
     using System.IO;
 

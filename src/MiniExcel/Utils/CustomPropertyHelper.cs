@@ -1,8 +1,8 @@
-﻿namespace Xunet.MiniExcel.Utils
+﻿namespace Xunet.MiniExcels.Utils
 {
-    using Xunet.MiniExcel.Attributes;
-    using Xunet.MiniExcel.OpenXml;
-    using Xunet.MiniExcel.OpenXml.Models;
+    using Xunet.MiniExcels.Attributes;
+    using Xunet.MiniExcels.OpenXml;
+    using Xunet.MiniExcels.OpenXml.Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;

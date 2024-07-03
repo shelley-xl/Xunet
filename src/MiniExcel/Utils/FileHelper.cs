@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel.Utils
+﻿namespace Xunet.MiniExcels.Utils
 {
     using System.IO;
 

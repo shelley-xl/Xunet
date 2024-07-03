@@ -2,7 +2,7 @@
 // Copyright (c) 2024 Rolls-Royce plc
 // </copyright>
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     using System;
     using System.IO;

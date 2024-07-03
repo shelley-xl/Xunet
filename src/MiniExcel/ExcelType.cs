@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel
+﻿namespace Xunet.MiniExcels
 {
     public enum ExcelType
     {

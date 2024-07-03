@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Xunet.MiniExcel
+namespace Xunet.MiniExcels
 {
     internal interface IExcelTemplate
     {

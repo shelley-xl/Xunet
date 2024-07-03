@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel.Attributes
+﻿namespace Xunet.MiniExcels.Attributes
 {
     using System;
 

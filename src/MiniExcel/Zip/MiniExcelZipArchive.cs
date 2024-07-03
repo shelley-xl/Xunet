@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace Xunet.MiniExcel.Zip
+namespace Xunet.MiniExcels.Zip
 {
     public class MiniExcelZipArchive : ZipArchive
     {

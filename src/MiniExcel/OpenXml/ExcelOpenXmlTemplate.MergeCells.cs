@@ -1,5 +1,5 @@
-﻿using Xunet.MiniExcel.Utils;
-using Xunet.MiniExcel.Zip;
+﻿using Xunet.MiniExcels.Utils;
+using Xunet.MiniExcels.Zip;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal partial class ExcelOpenXmlTemplate
     {

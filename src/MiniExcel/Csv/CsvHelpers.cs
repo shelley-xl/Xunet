@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel.Csv
+﻿namespace Xunet.MiniExcels.Csv
 {
     internal static class CsvHelpers
     {

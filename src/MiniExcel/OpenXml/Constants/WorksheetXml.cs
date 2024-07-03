@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Xunet.MiniExcel.OpenXml.Constants
+namespace Xunet.MiniExcels.OpenXml.Constants
 {
     internal class WorksheetXml
     {

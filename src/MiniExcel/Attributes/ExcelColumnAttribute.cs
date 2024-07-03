@@ -1,7 +1,7 @@
-﻿using Xunet.MiniExcel.Utils;
+﻿using Xunet.MiniExcels.Utils;
 using System;
 
-namespace Xunet.MiniExcel.Attributes
+namespace Xunet.MiniExcels.Attributes
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class ExcelColumnAttribute : Attribute

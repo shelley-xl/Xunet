@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal class MiniExcelStreamWriter : IDisposable
     {

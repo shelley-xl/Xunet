@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Xunet.MiniExcel.Exceptions
+namespace Xunet.MiniExcels.Exceptions
 {
     public class ExcelColumnNotFoundException : KeyNotFoundException
     {

@@ -1,6 +1,6 @@
-﻿namespace Xunet.MiniExcel.Utils
+﻿namespace Xunet.MiniExcels.Utils
 {
-    using Xunet.MiniExcel.Exceptions;
+    using Xunet.MiniExcels.Exceptions;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;

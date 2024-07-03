@@ -1,4 +1,4 @@
-﻿namespace Xunet.MiniExcel.OpenXml
+﻿namespace Xunet.MiniExcels.OpenXml
 {
     public class SheetInfo
     {

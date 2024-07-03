@@ -1,6 +1,6 @@
-﻿namespace Xunet.MiniExcel.Utils
+﻿namespace Xunet.MiniExcels.Utils
 {
-    using Xunet.MiniExcel.OpenXml;
+    using Xunet.MiniExcels.OpenXml;
     using System;
     using System.Linq;
     using System.Text;

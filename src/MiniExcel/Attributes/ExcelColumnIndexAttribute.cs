@@ -1,6 +1,6 @@
-﻿namespace Xunet.MiniExcel.Attributes
+﻿namespace Xunet.MiniExcels.Attributes
 {
-    using Xunet.MiniExcel.Utils;
+    using Xunet.MiniExcels.Utils;
     using System;
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]

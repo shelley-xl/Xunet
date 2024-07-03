@@ -1,7 +1,7 @@
-﻿using Xunet.MiniExcel.Attributes;
+﻿using Xunet.MiniExcels.Attributes;
 using System.Globalization;
 
-namespace Xunet.MiniExcel
+namespace Xunet.MiniExcels
 {
     public interface IConfiguration { }
     public abstract class Configuration : IConfiguration

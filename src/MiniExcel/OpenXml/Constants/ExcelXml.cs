@@ -1,11 +1,11 @@
-﻿using Xunet.MiniExcel.Attributes;
-using Xunet.MiniExcel.OpenXml.Models;
-using Xunet.MiniExcel.Utils;
+﻿using Xunet.MiniExcels.Attributes;
+using Xunet.MiniExcels.OpenXml.Models;
+using Xunet.MiniExcels.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xunet.MiniExcel.OpenXml.Constants
+namespace Xunet.MiniExcels.OpenXml.Constants
 {
     internal static class ExcelXml
     {

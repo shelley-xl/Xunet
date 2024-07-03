@@ -1,17 +1,17 @@
-﻿using Xunet.MiniExcel.Attributes;
-using Xunet.MiniExcel.OpenXml.Constants;
-using Xunet.MiniExcel.OpenXml.Models;
-using Xunet.MiniExcel.Utils;
-using Xunet.MiniExcel.Zip;
+﻿using Xunet.MiniExcels.Attributes;
+using Xunet.MiniExcels.OpenXml.Constants;
+using Xunet.MiniExcels.OpenXml.Models;
+using Xunet.MiniExcels.Utils;
+using Xunet.MiniExcels.Zip;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using static Xunet.MiniExcel.Utils.ImageHelper;
+using static Xunet.MiniExcels.Utils.ImageHelper;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal partial class ExcelOpenXmlSheetWriter : IExcelWriter
     {

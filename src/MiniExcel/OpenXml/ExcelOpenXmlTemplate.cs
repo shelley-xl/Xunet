@@ -1,8 +1,8 @@
 ﻿
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
-    using Xunet.MiniExcel.Utils;
-    using Xunet.MiniExcel.Zip;
+    using Xunet.MiniExcels.Utils;
+    using Xunet.MiniExcels.Zip;
     using System;
     using System.Collections.Generic;
     using System.Data;

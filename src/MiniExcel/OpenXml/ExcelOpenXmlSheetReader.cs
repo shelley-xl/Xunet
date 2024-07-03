@@ -1,5 +1,5 @@
-﻿using Xunet.MiniExcel.Utils;
-using Xunet.MiniExcel.Zip;
+﻿using Xunet.MiniExcels.Utils;
+using Xunet.MiniExcels.Zip;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal class ExcelOpenXmlSheetReader : IExcelReader
     {

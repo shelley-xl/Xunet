@@ -6,7 +6,7 @@ using System.IO.Compression;
 using System.Text;
 using System.Xml;
 
-namespace Xunet.MiniExcel.Zip
+namespace Xunet.MiniExcels.Zip
 {
     /// Copy & modified by ExcelDataReader ZipWorker @MIT License
     internal class ExcelOpenXmlZip : IDisposable

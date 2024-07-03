@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal class MergeCells
     {

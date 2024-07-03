@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 
 
-namespace Xunet.MiniExcel.Utils
+namespace Xunet.MiniExcels.Utils
 {
     /// <summary>
     /// This code edit from https://github.com/andersnm/ExcelNumberFormat

@@ -1,6 +1,6 @@
-﻿using Xunet.MiniExcel.Attributes;
+﻿using Xunet.MiniExcels.Attributes;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     public class OpenXmlConfiguration : Configuration
     {

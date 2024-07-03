@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xunet.MiniExcel.Attributes
+namespace Xunet.MiniExcels.Attributes
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class ExcelFormatAttribute : Attribute

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal sealed class SheetRecord
     {

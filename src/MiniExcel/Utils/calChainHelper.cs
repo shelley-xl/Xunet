@@ -2,7 +2,7 @@
 using System.Text;
 using System.Xml;
 
-namespace Xunet.MiniExcel.Utils
+namespace Xunet.MiniExcels.Utils
 {
     internal static class CalcChainHelper
     {

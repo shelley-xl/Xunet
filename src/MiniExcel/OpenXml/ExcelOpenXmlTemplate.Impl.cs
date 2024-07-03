@@ -1,5 +1,5 @@
-using Xunet.MiniExcel.Attributes;
-using Xunet.MiniExcel.Utils;
+using Xunet.MiniExcels.Attributes;
+using Xunet.MiniExcels.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace Xunet.MiniExcel.OpenXml
+namespace Xunet.MiniExcels.OpenXml
 {
     internal partial class ExcelOpenXmlTemplate
     {

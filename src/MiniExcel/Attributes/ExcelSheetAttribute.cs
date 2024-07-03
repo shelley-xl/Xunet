@@ -1,7 +1,7 @@
-﻿using Xunet.MiniExcel.OpenXml;
+﻿using Xunet.MiniExcels.OpenXml;
 using System;
 
-namespace Xunet.MiniExcel.Attributes
+namespace Xunet.MiniExcels.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ExcelSheetAttribute : Attribute

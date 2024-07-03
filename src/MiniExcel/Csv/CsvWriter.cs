@@ -1,4 +1,4 @@
-﻿using Xunet.MiniExcel.Utils;
+﻿using Xunet.MiniExcels.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Xunet.MiniExcel.Csv
+namespace Xunet.MiniExcels.Csv
 {
     internal class CsvWriter : IExcelWriter, IDisposable
     {

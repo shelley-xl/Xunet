@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
 
-namespace Xunet.MiniExcel
+namespace Xunet.MiniExcels
 {
     public abstract class Member
     {
