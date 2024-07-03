@@ -282,7 +282,16 @@ JobManager.AddJob(() => DoWork(), (x) =>
 });
 ```
 
-5、AOP组件
+5、Excel组件
+
+```c#
+// 使用MiniExcel
+using Xunet.MiniExcels;
+
+var list = MiniExcel.Query<User>(path).ToList();
+```
+
+6、AOP组件
 
 ```c#
 // 说明：仅支持.NET 6.0 及以上版本
@@ -371,14 +380,6 @@ public class OperateLogAttribute : AfterActionAttribute
         return null;
     }
 }
-```
-
-6、Excel组件
-
-```c#
-using Xunet.MiniExcels;
-
-var list = MiniExcel.Query<User>(path).ToList();
 ```
 
 ## 感谢
