@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<Version>1.0.21</Version>
+		<Version>1.0.22</Version>
 		<TotalDays>$([System.DateTime]::Now.Date.Subtract($([System.DateTime]::Parse($([System.String]::Format("{0}-1-1",2024))))).TotalDays)</TotalDays>
 		<AssemblyVersion>$(Version).$(TotalDays)</AssemblyVersion>
 		<FileVersion>$(Version).$(TotalDays)</FileVersion>
@@ -24,7 +24,7 @@
 		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
 		<PackageId>Xunet</PackageId>
-		<PackageTags>tools,helper,components</PackageTags>
+		<PackageTags>tools,helper,components,effective</PackageTags>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -47,12 +47,15 @@
 		<Reference Include="System.IO.Compression" />
 		<Reference Include="System.Net.Http" />
 		<Reference Include="System.Management" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)'=='net45'">
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 		<PackageReference Include="IndexRange" Version="1.0.3" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0'">
-		<PackageReference Include="System.Management" Version="7.0.2" />
+		<PackageReference Include="System.Management" Version="8.0.0" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net45'">
