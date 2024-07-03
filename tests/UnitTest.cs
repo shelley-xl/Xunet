@@ -1,5 +1,3 @@
-using Xunet.MiniExcels;
-
 namespace Xunet.Tests;
 
 public class UnitTest
@@ -129,7 +127,5 @@ public class UnitTest
         var result = client.GetAsync("").Result;
         Assert.True(result.IsSuccessStatusCode);
         #endregion
-
-        MiniExcel.Query<User>("");
     }
 }
