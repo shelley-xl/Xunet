@@ -18,7 +18,7 @@ public class UnitTest
         var user = new User { Name = "徐来" };
         var name = user.GetProperty<string>("Name");
         Assert.Equal("徐来", name);
-        var namenew = user.SetProperty("Name", "徐来new");
+        user.SetProperty("Name", "徐来new");
         name = user.GetProperty<string>("Name");
         Assert.Equal("徐来new", name);
         #endregion
