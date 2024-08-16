@@ -401,3 +401,7 @@ public class OperateLogAttribute : AfterActionAttribute
 - [TimeCrontab](https://github.com/MonkSoul/TimeCrontab)
 
 - [MiniExcel](https://github.com/mini-software/MiniExcel)
+
+## 更新日志
+
+[CHANGELOG](CHANGELOG.md)

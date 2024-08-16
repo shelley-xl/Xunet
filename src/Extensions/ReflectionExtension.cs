@@ -1,12 +1,17 @@
-﻿using System.Collections.Concurrent;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
+namespace Xunet.Extensions;
+
+using System.Collections.Concurrent;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System;
-
-namespace Xunet.Extensions;
 
 #region 反射扩展类
 /// <summary>

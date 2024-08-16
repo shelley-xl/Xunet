@@ -1,14 +1,18 @@
-﻿using Xunet.CSRedis;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
+namespace Xunet.Helpers;
+
+using CSRedis;
 using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.IO;
 using System.Threading.Tasks;
-
-namespace Xunet.Helpers;
 
 public abstract class RedisHelper : RedisHelper<RedisHelper> { }
 

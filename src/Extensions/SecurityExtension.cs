@@ -1,8 +1,13 @@
-﻿using System;
-using System.Security.Cryptography;
-using System.Text;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
 
 namespace Xunet.Extensions;
+
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 #region 加解密扩展类
 /// <summary>

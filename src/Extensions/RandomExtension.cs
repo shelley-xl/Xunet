@@ -1,9 +1,14 @@
-﻿using System;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
+namespace Xunet.Extensions;
+
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
-namespace Xunet.Extensions;
 
 #region 随机数扩展类
 /// <summary>

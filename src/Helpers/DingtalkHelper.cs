@@ -1,11 +1,16 @@
-﻿using System.Security.Cryptography;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
+namespace Xunet.Helpers;
+
+using System.Security.Cryptography;
 using System.Text;
 using System;
 using System.Collections.Generic;
-using Xunet.Newtonsoft.Json.Linq;
-using Xunet.Extensions;
-
-namespace Xunet.Helpers;
+using Newtonsoft.Json.Linq;
+using Extensions;
 
 /// <summary>
 /// 钉钉辅助类

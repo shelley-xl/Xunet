@@ -1,9 +1,14 @@
-﻿using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-using Xunet.Extensions;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
 
 namespace Xunet.Helpers;
+
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
+using Extensions;
 
 /// <summary>
 /// 字符串辅助类

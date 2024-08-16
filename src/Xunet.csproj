@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<!-- version numbers will be updated by build -->
-		<Version>1.0.22</Version>
+		<Version>1.0.23</Version>
 		<TotalDays>$([System.DateTime]::Now.Date.Subtract($([System.DateTime]::Parse($([System.String]::Format("{0}-1-1",2024))))).TotalDays)</TotalDays>
 		<AssemblyVersion>$(Version).$(TotalDays)</AssemblyVersion>
 		<FileVersion>$(Version).$(TotalDays)</FileVersion>
@@ -25,7 +25,7 @@
 		<RepositoryUrl>https://github.com/shelley-xl/Xunet</RepositoryUrl>
 		<PackageId>Xunet</PackageId>
 		<PackageTags>tools,helper,components,effective</PackageTags>
-		<PackageIcon>logo.png</PackageIcon>
+		<PackageIcon>LOGO.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/shelley-xl/Xunet</PackageProjectUrl>
@@ -83,14 +83,22 @@
 
 	<ItemGroup>
 		<None Include="..\LICENSE">
+			<Visible>false</Visible>
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Include="..\logo.png">
+		<None Include="..\LOGO.png">
+			<Visible>false</Visible>
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
 		<None Include="..\README.md">
+			<Visible>false</Visible>
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\CHANGELOG.md">
+			<Visible>false</Visible>
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

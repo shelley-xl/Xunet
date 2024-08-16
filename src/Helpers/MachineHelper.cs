@@ -1,12 +1,17 @@
-﻿using System;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
+namespace Xunet.Helpers;
+
+using System;
 using System.Collections;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using Xunet.Extensions;
-
-namespace Xunet.Helpers;
+using Extensions;
 
 /// <summary>
 /// 机器辅助类
@@ -57,7 +62,7 @@ public class MachineHelper
 
     /// <summary>
     /// 获取当前机器的注册码
-    /// 生成规则：AES(机器码 + 过期时间戳 + 注册时间戳)
+    /// 生成规则：AES(机器码 + 过期时间戳 + 注册时间戳 + 过期天数)
     /// </summary>
     /// <param name="key">32位秘钥</param>
     /// <param name="expireDays">过期天数</param>
@@ -67,7 +72,7 @@ public class MachineHelper
         var now = GetNetDateTime();
         var expireTime = now.AddDays(expireDays).ToTimeStamp();
         var registerTime = now.ToTimeStamp();
-        var registerCode = $"{machineCode}&{expireTime}&{registerTime}";
+        var registerCode = $"{machineCode}&{expireTime}&{registerTime}&{expireDays}";
         return registerCode.ToAESEncrypt(key);
     }
 
@@ -83,13 +88,12 @@ public class MachineHelper
         var machineCode = GetMachineCode();
         var code = registerCode.ToAESDecrypt(key);
         var codeArray = code.Split('&');
-        if (codeArray.Length != 3) return false;
-        var codeMachineCode = codeArray[0];
-        var codeExpireTime = codeArray[1];
-        var codeRegisterTime = codeArray[2];
-        if (machineCode != codeMachineCode) return false;
-        var expireTime = long.Parse(codeExpireTime);
-        var registerTime = long.Parse(codeRegisterTime);
+        if (codeArray.Length != 4) return false;
+        if (!long.TryParse(codeArray[1], out long expireTime)) return false;
+        if (!long.TryParse(codeArray[2], out long registerTime)) return false;
+        if (!int.TryParse(codeArray[3], out int expireDays)) return false;
+        if (expireDays == -1) return true;
+        if (machineCode != codeArray[0]) return false;
         if (now.ToTimeStamp() > expireTime) return false;
         if (registerTime > now.ToTimeStamp()) return false;
         return true;
@@ -186,7 +190,7 @@ public class MachineHelper
     /// 获取本机所有占用端口
     /// </summary>
     /// <returns></returns>
-    static IList GetUsedPort()
+    static ArrayList GetUsedPort()
     {
         //获取本地计算机的网络连接和通信统计数据的信息
         IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
@@ -201,7 +205,7 @@ public class MachineHelper
         TcpConnectionInformation[] tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
 
         // 显示本地计算机上的所有端口
-        IList allPorts = new ArrayList();
+        ArrayList allPorts = new ArrayList();
 
         // 添加TCP端口
         foreach (IPEndPoint ep in ipsTCP)

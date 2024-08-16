@@ -1,8 +1,13 @@
-﻿using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) 徐来 ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
 
 namespace Xunet.Extensions;
+
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 
 #region String扩展类
 /// <summary>
