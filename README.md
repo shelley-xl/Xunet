@@ -2,7 +2,7 @@
 
 Xunet is a general purpose tool library for .NET,contains extension methods,helper classes and some components,which is used to simplify development and improve work efficiency.
 
-Support .NET Framework 4.5+、.NET 6.0、.NET 7.0、.NET 8.0
+Support .NET Framework 4.5+、.NET 6.0+
 
 [![Nuget](https://img.shields.io/nuget/v/Xunet.svg?style=flat-square)](https://www.nuget.org/packages/Xunet)
 [![Downloads](https://img.shields.io/nuget/dt/Xunet.svg?style=flat-square)](https://www.nuget.org/stats/packages/Xunet?groupby=Version)
@@ -291,12 +291,12 @@ using Xunet.MiniExcels;
 var list = MiniExcel.Query<User>(path).ToList();
 ```
 
-6、AOP组件
+6、Aop组件
 
 ```c#
 // 说明：仅支持.NET 6.0 及以上版本
-using Xunet.AOP;
-using Xunet.AOP.Filters;
+using Xunet.Aop;
+using Xunet.Aop.Filters;
 
 IUserService userService = new UserService();
 userService = TransformProxy.GetDynamicProxy(userService);
@@ -382,6 +382,25 @@ public class OperateLogAttribute : AfterActionAttribute
 }
 ```
 
+7、对象映射组件
+
+```c#
+// 使用TinyMapper
+using Xunet.ObjectMapper;
+
+TinyMapper.Bind<UserDto, User>(config =>
+{
+    config.Bind(source => source.UserName!, target => target.Name!);
+});
+
+var userDto = new UserDto
+{
+    UserName = "Test",
+};
+
+var user = TinyMapper.Map<User>(userDto);
+```
+
 ## 感谢
 
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
@@ -401,6 +420,8 @@ public class OperateLogAttribute : AfterActionAttribute
 - [TimeCrontab](https://github.com/MonkSoul/TimeCrontab)
 
 - [MiniExcel](https://github.com/mini-software/MiniExcel)
+
+- [TinyMapper](https://github.com/TinyMapper/TinyMapper)
 
 ## 更新日志
 
