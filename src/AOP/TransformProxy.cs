@@ -7,7 +7,7 @@
 
 using System.Reflection;
 
-namespace Xunet.AOP;
+namespace Xunet.Aop;
 
 public class TransformProxy
 {

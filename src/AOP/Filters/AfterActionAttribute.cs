@@ -7,7 +7,7 @@
 
 using System;
 
-namespace Xunet.AOP.Filters;
+namespace Xunet.Aop.Filters;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public abstract class AfterActionAttribute : Attribute

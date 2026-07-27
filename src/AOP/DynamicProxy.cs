@@ -7,9 +7,9 @@
 
 using System.Linq;
 using System.Reflection;
-using Xunet.AOP.Filters;
+using Xunet.Aop.Filters;
 
-namespace Xunet.AOP;
+namespace Xunet.Aop;
 
 public class DynamicProxy<T> : DispatchProxy
 {
