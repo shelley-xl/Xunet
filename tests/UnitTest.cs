@@ -1,3 +1,8 @@
+// THIS FILE IS PART OF Xunet PROJECT
+// THE Xunet PROJECT IS AN OPENSOURCE LIBRARY LICENSED UNDER THE MIT License.
+// COPYRIGHTS (C) –Ï¿¥ ALL RIGHTS RESERVED.
+// GITHUB: https://github.com/shelley-xl/Xunet
+
 namespace Xunet.Tests;
 
 public class UnitTest
@@ -104,9 +109,9 @@ public class UnitTest
     }
 
     [Fact]
-    public void AOPTest()
+    public void AopTest()
     {
-        #region AOP
+        #region Aop
         IUserService userService = new UserService();
         userService = TransformProxy.GetDynamicProxy(userService);
         var result = userService.Create("Processing", []);
@@ -126,6 +131,32 @@ public class UnitTest
         Assert.NotNull(client);
         var result = client.GetAsync("").Result;
         Assert.True(result.IsSuccessStatusCode);
+        #endregion
+    }
+
+    [Fact]
+    public void ObjectMapperTest()
+    {
+        #region ∂‘œÛ”≥…‰
+
+        if (!TinyMapper.BindingExists<UserDto, User>())
+        {
+            TinyMapper.Bind<UserDto, User>(config =>
+            {
+                config.Bind(source => source.UserName!, target => target.Name!);
+            });
+        }
+
+        var userDto = new UserDto
+        {
+            UserName = "Test",
+        };
+
+        var user = TinyMapper.Map<User>(userDto);
+
+        Assert.NotNull(user);
+        Assert.Equal("Test", user.Name);
+
         #endregion
     }
 }
